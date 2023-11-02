@@ -1,6 +1,6 @@
 # ShopOto-NodeJs
-Install:
+1. Install:
 - npm install
-Run app:
+2. Run app:
 - npm start
 - npm run watch
