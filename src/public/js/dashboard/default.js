@@ -8,23 +8,23 @@ new Chartist.Bar('.market-chart', {
     ]
 },
     {
-        seriesBarDistance: 2,
-        chartPadding: {
-            left: 0,
-            right: 0,
-            bottom: 0,
-        },
-        axisX: {
-            showGrid: false,
-            labelInterpolationFnc: function (value) {
-                return value[0];
-            }
+    seriesBarDistance: 2,
+    chartPadding: {
+        left: 0,
+        right: 0,
+        bottom: 0,
+    },
+    axisX: {
+        showGrid: false,
+        labelInterpolationFnc: function(value) {
+            return value[0];
         }
-    }, [
+    }
+}, [
     ['screen and (min-width: 300px)', {
         seriesBarDistance: 15,
         axisX: {
-            labelInterpolationFnc: function (value) {
+            labelInterpolationFnc: function(value) {
                 return value.slice(0, 3);
             }
         }
@@ -35,8 +35,8 @@ new Chartist.Bar('.market-chart', {
             labelInterpolationFnc: Chartist.noop
         }
     }]
-]).on('draw', function (ctx) {
-    if (ctx.type === 'bar') {
+]).on('draw', function(ctx) {
+    if(ctx.type === 'bar') {
         ctx.element.attr({
             x1: ctx.x1 + 0.05,
             style: 'stroke-linecap: round'
@@ -46,10 +46,10 @@ new Chartist.Bar('.market-chart', {
 
 
 // vector map
-! function (maps) {
+! function(maps) {
     "use strict";
-    var b = function () { };
-    b.prototype.init = function () {
+    var b = function() {};
+    b.prototype.init = function() {
         maps("#world").vectorMap({
             map: "world_mill_en",
             scaleColors: ["#00baf2", "#1B8BF9"],
@@ -62,13 +62,13 @@ new Chartist.Bar('.market-chart', {
                 }
             },
             markers: [
-                { latLng: [23.30, 77.36], name: 'bhopal', style: { r: 8, fill: 'white' } },
-                { latLng: [24.774, 46.73], name: 'saudi Arbia', style: { r: 8, fill: 'white' } },
-                { latLng: [43.238949, 76.889709], name: 'Kazakstan', style: { r: 8, fill: 'white' } },
-                { latLng: [53.278046, -110.005470], name: 'Canada', style: { r: 8, fill: 'white' } },
-                { latLng: [14.23, 51.92], name: 'Brazil', style: { r: 8, fill: 'white' } },
-                { latLng: [64.11, 51.43], name: 'Greenland', style: { r: 8, fill: 'white' } },
-                { latLng: [69.19, 88.13], name: 'Russia', style: { r: 8, fill: 'white' } }
+                { latLng: [23.30, 77.36], name: 'bhopal', style: {r: 8, fill:'white'}},
+                { latLng: [24.774, 46.73], name: 'saudi Arbia', style: {r: 8, fill:'white'}},
+                { latLng: [43.238949, 76.889709], name: 'Kazakstan', style: {r: 8, fill:'white'}},
+                { latLng: [53.278046, -110.005470], name: 'Canada', style: {r: 8, fill:'white'}},
+                { latLng: [14.23, 51.92], name: 'Brazil', style: {r: 8, fill:'white'}},
+                { latLng: [64.11, 51.43], name: 'Greenland', style: {r: 8, fill:'white'}},
+                { latLng: [69.19, 88.13], name: 'Russia', style: {r: 8, fill:'white'}}
             ],
             series: {
                 regions: [{
@@ -264,7 +264,7 @@ new Chartist.Bar('.market-chart', {
         })
     }, maps.VectorMap = new b, maps.VectorMap.Constructor = b
 }(window.jQuery),
-    function (maps) {
+    function(maps) {
         "use strict";
         maps.VectorMap.init()
     }(window.jQuery);
@@ -308,12 +308,12 @@ var optionsearningchart = {
     fill: {
         opacity: 1
     },
-    colors: ['#314da7'],
+    colors:['#314da7'],
 
     stroke: {
         dashArray: 4
     },
-    series: [8 * 10],
+    series: [8*10],
     labels: ['Customer Ratio'],
 
 
@@ -339,7 +339,7 @@ new Chartist.Bar('.revenue-chart', {
         left: 0
     },
     axisY: {
-        labelInterpolationFnc: function (value) {
+        labelInterpolationFnc: function(value) {
             return (value / 1000) + 'k';
         },
         showLabel: false,
@@ -350,8 +350,8 @@ new Chartist.Bar('.revenue-chart', {
         showGrid: false,
     }
 
-}).on('draw', function (ctx) {
-    if (ctx.type === 'bar') {
+}).on('draw', function(ctx) {
+    if(ctx.type === 'bar') {
         ctx.element.attr({
             x1: ctx.x1 + 0.05,
             style: 'stroke-width: 15px ; stroke-linecap: round'
@@ -361,29 +361,29 @@ new Chartist.Bar('.revenue-chart', {
 
 
 // btn js
-$('.btn-js').click(function () {
+$('.btn-js').click(function(){
     //make all inactive-doesn't work
-    $('.btn-js').each(function () {
-        if ($(this).hasClass('active')) {
+    $( '.btn-js' ).each(function( ) {
+        if($(this).hasClass('active')){
             $(this).removeClass('active')
         }
     });
 
-    if ($(this).hasClass('active')) {
+    if($(this).hasClass('active')){
         $(this).removeClass('active')
     } else {
         $(this).addClass('active')
     }
 });
 
-$('.btn-js1').click(function () {
-    $('.btn-js1').each(function () {
-        if ($(this).hasClass('active')) {
+$('.btn-js1').click(function(){
+    $( '.btn-js1' ).each(function( ) {
+        if($(this).hasClass('active')){
             $(this).removeClass('active')
         }
     });
 
-    if ($(this).hasClass('active')) {
+    if($(this).hasClass('active')){
         $(this).removeClass('active')
     } else {
         $(this).addClass('active')
@@ -394,7 +394,7 @@ $('.btn-js1').click(function () {
 if ($("#multiple-real-timeupdate ").length > 0) {
     var a = [],
         b = 300,
-        c = function () {
+        c = function() {
             for (a.length > 0 && (a = a.slice(1)); a.length < b;) {
                 var c = a.length > 0 ? a[a.length - 1] : 50,
                     d = c + 10 * Math.random() - 5;
@@ -405,7 +405,7 @@ if ($("#multiple-real-timeupdate ").length > 0) {
         },
         d = [],
         b = 300,
-        e = function () {
+        e = function() {
             for (d.length > 0 && (d = d.slice(1)); d.length < b;) {
                 var a = d.length > 0 ? d[d.length - 1] : 50,
                     c = a + 10 * Math.random() - 5;
@@ -418,9 +418,9 @@ if ($("#multiple-real-timeupdate ").length > 0) {
         g = 30;
     g && !isNaN(+g) && (f = +g, f < 1 ? f = 1 : f > 2e3 && (f = 2e3), $(this).val("" + f));
     var h = {
-        color: "#F8B98B",
-        data: c()
-    },
+            color: "#F8B98B",
+            data: c()
+        },
         i = {
             color: "#31CFF9",
             data: e()
@@ -441,7 +441,7 @@ if ($("#multiple-real-timeupdate ").length > 0) {
                 fill: true,
                 lineWidth: 3,
                 fillColor: {
-                    colors: [{ opacity: 0.5 }, { opacity: 0.5 }]
+                    colors: [{ opacity: 0.5 }, { opacity: 0.5 } ]
                 }
             },
             xaxis: {
@@ -452,7 +452,7 @@ if ($("#multiple-real-timeupdate ").length > 0) {
             },
             colors: ["#11d89c", "#00baf2"]
         }),
-        k = function () {
+        k = function() {
             j.setData([c(), e()]), j.draw(), setTimeout(k, f)
         };
     k()
