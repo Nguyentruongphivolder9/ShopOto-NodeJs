@@ -1,13 +1,9 @@
-const siteRouter = require('./site');
-const productRouter = require('./product');
-const adminRouter = require('./admin');
+const routersFE = require('./font-end');
+const routersBE = require('./back-end');
 
 function routers(app) {
-
-    app.use('/admin', adminRouter.router);
-    app.use('/admin', adminRouter.order);
-    app.use('/product', productRouter);
-    app.use('/', siteRouter);
+    routersFE(app);
+    routersBE(app);
 }
 
 module.exports = routers;

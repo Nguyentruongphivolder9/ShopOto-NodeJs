@@ -21,49 +21,45 @@
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <!-- <link href="/lib/animate/animate.min.css" rel="stylesheet"> -->
-    <!-- <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"> -->
-
     <!-- admin -->
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
-    <!-- Font Awesome-->
-    <link rel="stylesheet" type="text/css" href="/css/font-awesome.css">
+    <% if(admin) { %>
+        <!-- Font Awesome-->
+        <link rel="stylesheet" type="text/css" href="/css/font-awesome.css">
 
-    <!-- Flag icon-->
-    <link rel="stylesheet" type="text/css" href="/css/flag-icon.css">
+        <!-- Flag icon-->
+        <link rel="stylesheet" type="text/css" href="/css/flag-icon.css">
 
-    <!-- ico-font-->
-    <!-- <link rel="stylesheet" type="text/css" href="/css/icofont.css"> -->
+        <!-- Datatables css-->
+        <link rel="stylesheet" type="text/css" href="/css/datatables.css">
 
-    <!-- Prism css -->
-    <!-- <<link rel="stylesheet" type="text/css" href="/css/prism.css"> -->
+        <!-- Bootstrap css-->
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
 
-    <!-- table css-->
-    <link rel="stylesheet" type="text/css" href="/css/datatables.css">
+        <!-- App css-->
+        <link rel="stylesheet" type="text/css" href="/css/admin.css">
 
-    <!-- Chartist css -->
-    <!-- <link rel="stylesheet" type="text/css" href="/css/chartist.css"> -->
+        <!-- Chartist css -->
+        <link rel="stylesheet" type="text/css" href="/css/chartist.css">
 
-    <!-- vector map css -->
-    <!-- <link rel="stylesheet" type="text/css" href="/css/vector-map.css"> -->
+        <% } else { %>
+            <!-- Libraries Stylesheet -->
+            <link href="/lib/animate/animate.min.css" rel="stylesheet">
+            <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-    <!-- Bootstrap css-->
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
-
-    <!-- App css-->
-    <link rel="stylesheet" type="text/css" href="/css/admin.css">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <!-- <link href="/css/style.css" rel="stylesheet"> -->
+            <!-- Customized Bootstrap Stylesheet -->
+            <link href="/css/style.css" rel="stylesheet">
+            <% } %>
 </head>
 
 <body>
     <% if(admin) { %>
+        <!-- latest jquery-->
+        <script src="/js/jquery-3.3.1.min.js"></script>
         <!-- page-wrapper Start-->
         <div class="page-wrapper">
 
@@ -81,6 +77,31 @@
                 </div>
 
         </div>
+        <!-- Bootstrap js-->
+        <script src="/js/popper.min.js"></script>
+        <script src="/js/bootstrap.js"></script>
+
+        <!-- feather icon js-->
+        <script src="/js/icons/feather-icon/feather.min.js"></script>
+        <script src="/js/icons/feather-icon/feather-icon.js"></script>
+
+        <!-- Sidebar jquery-->
+        <script src="/js/sidebar-menu.js"></script>
+
+        <!--dashboard custom js-->
+        <script src="/js/dashboard/default.js"></script>
+
+        <!--right sidebar js-->
+        <script src="/js/chat-menu.js"></script>
+
+        <!--height equal js-->
+        <script src="/js/equal-height.js"></script>
+
+        <!-- lazyload js-->
+        <script src="/js/lazysizes.min.js"></script>
+
+        <!--script admin-->
+        <script src="/js/admin-script.js"></script>
         <% } else { %>
             <%- include('partials/header.ejs') %>
 
@@ -91,54 +112,21 @@
                         <!-- Back to Top -->
                         <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
+                        <!-- JavaScript Libraries -->
+                        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+                        <script
+                            src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+                        <script src="lib/easing/easing.min.js"></script>
+                        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+                        <!-- Contact Javascript File -->
+                        <script src="mail/jqBootstrapValidation.min.js"></script>
+                        <script src="mail/contact.js"></script>
+
+                        <!-- Template Javascript -->
+                        <script src="js/main.js"></script>
+
                         <% } %>
-
-
-
-                            <!-- Template Javascript -->
-
-                            <!-- JavaScript Libraries -->
-                            <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-                            <script
-                                src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-                            <script src="/lib/easing/easing.min.js"></script>
-                            <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
-
-                            <!-- Contact Javascript File -->
-                            <!-- <script src="/mail/jqBootstrapValidation.min.js"></script>
-                                <script src="/mail/contact.js"></script> -->
-
-                            <!-- latest jquery-->
-                            <script src="/js/main.js"></script>
-                            <script src="/js/jquery-3.3.1.min.js"></script>
-
-                            <!-- Bootstrap js-->
-                            <script src="/js/popper.min.js"></script>
-                            <script src="/js/bootstrap.js"></script>
-
-                            <!-- feather icon js-->
-                            <script src="/js/icons/feather-icon/feather.min.js"></script>
-                            <script src="/js/icons/feather-icon/feather-icon.js"></script>
-
-                            <!-- Sidebar jquery-->
-                            <script src="/js/sidebar-menu.js"></script>
-
-                            <!-- lazyload js-->
-                            <script src="/js/lazysizes.min.js"></script>
-
-                            <!--right sidebar js-->
-                            <script src="/js/chat-menu.js"></script>
-
-                            <!--height equal js-->
-                            <script src="/js/equal-height.js"></script>
-
-                            <!-- lazyload js-->
-                            <script src="/js/lazysizes.min.js"></script>
-
-                            <!--script admin-->
-                            <script src="/js/admin-script.js"></script>
-
-
 </body>
 
 </html>
