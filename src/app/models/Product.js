@@ -1,53 +1,39 @@
 const { Schema, default: mongoose } = require('mongoose');
-const slug = require('mongoose-slug-updater');
+// const slug = require('mongoose-slug-updater');
 
 const productSchema = new Schema({
-    product_name: {
-        type: String,
-        required: [true, "Product name is not empty!"],
-        trim: true,
-        validate: {
-            validator: function (v) {
-                if (v.length < 4 || v.length > 49) {
-                    return false;
-                }
-                if (/[^a-zA-Z0-9\s]/.test(v)) {
-                    return false;
-                }
-                return true;
-            },
-            message: () => "Lỗi định dạng"
-        },
-    },
+    _id: mongoose.Schema.Types.ObjectId,
     categoryId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'categories',
+        ref: 'Category',
+    },
+    product_name:{
+        type:String,
+        required: [true,"Tên sản phẩm là bắt buộc"]
     },
     price: {
         type: Number,
         required: [true, "Giá sản phẩm không được để trống"],
-        min: [1, 'Giá sản phẩm phải lớn hơn 1$ và nhỏ hơn 100000$'],
-        max: [100000, 'Giá sản phẩm phải lớn hơn 1$ và nhỏ hơn 100000$']
+        min: [1000, 'Giả sản phẩm phải lớn hơn 1 ngàn đô'],
+        max: [1000000, 'Giá sản phẩm phải nhỏ hơn 1 triệu đô']
     },
-    image: {
-        type: String,
-        validate: {
-            validator: function (v) {
-                return /\.(jpg|jpeg|png)$/i.test(v);
-            },
-            message: (props) => `${props.value} allow type: jpg, jpeg, png`
+    image:[{
+        type:String,
+        validator:function(v){
+            return /\.(jpg|jpeg|png)$/i.test(v);
         },
-        required: [true, 'Image is required']
-    },
-    slug: {
-        type: String,
-        slug: 'name',
-        unique: true
-    },
+        message:"Invalid image field format",
+        required: [true,"Ảnh sản phẩm không được để trống"]
+    }],
+    // slug: {
+    //     type: String,
+    //     slug: 'name',
+    //     unique: true,
+    // },
 }, {
     timestamps: true,
 });
 
-mongoose.plugin(slug);
+// mongoose.plugin(slug);
 
 module.exports = mongoose.model('Product', productSchema);
