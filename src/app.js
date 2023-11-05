@@ -12,17 +12,18 @@ db.connect();
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(expressLayouts)
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "resources", "views"));
-
+app.use(expressLayouts);
 app.use(session({
     secret:"Group3-HK3",
     resave:false,
     saveUninitialized:true,
 }))
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "resources", "views"));
 
 routers(app);
+
+
 
 app.listen(PORT, () => {
     console.log(`Listening on http://localhost:${PORT}`);

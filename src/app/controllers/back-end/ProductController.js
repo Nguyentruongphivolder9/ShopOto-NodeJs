@@ -14,11 +14,12 @@ class ProductController {
     getFormCreate(req,res){
         res.render('back-end/createProduct',{admin:true,data:null,err:null});
     }
-    async createProduct(req,res){
+    async createProduct(req, res) {
         let { product_name, price } = req.body;
         const images = req.files;
 
         const productFolderPath = './public/img/product';
+
         if (!fs.existsSync(productFolderPath)) {
             fs.mkdirSync(productFolderPath, { recursive: true });
         }
@@ -30,11 +31,12 @@ class ProductController {
             product_name: product_name,
             price: price,
             image: imageUrls,
-        }
-        await Product.create(dataSubmit).then(result =>{
-            req.session.message = "Product create successfully";
+        };
+
+        await Product.create(dataSubmit).then(result => {
+            req.session.message = "Product created successfully";
             res.redirect("/admin/product");
-        })
+        });
     }
 }
 

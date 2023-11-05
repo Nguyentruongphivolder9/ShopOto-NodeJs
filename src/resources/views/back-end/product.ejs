@@ -51,7 +51,7 @@
                                     </td>
                                     <td><%= item.product_name %></td>
                                     <td><%= item.price %></td>
-                                    <td><%= new Date(item.timestamp).toLocaleDateString() %></td>
+                                    <td><%= new Date(item.createdAt).toLocaleDateString() %></td>
                                     <td>
                                         <a href="/admin/product/edit" class="badge badge-success">Edit</a>
                                         <a href="/admin/product/hide" class="badge badge-danger">Hide</a>
