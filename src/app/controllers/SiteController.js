@@ -21,6 +21,10 @@ class SiteController {
         res.render('font-end/checkout', { admin: false });
     }
 
+    login(req, res, next) {
+        res.render('login', { layout: false });
+    }
+
     admin(req, res, next) {
         res.render('back-end/index', { admin: true });
     }
