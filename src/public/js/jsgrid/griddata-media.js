@@ -1,8 +1,8 @@
 'use strict';
-(function() {
+(function () {
     var db = {
-        loadData: function(filter) {
-            return $.grep(this.clients, function(client) {
+        loadData: function (filter) {
+            return $.grep(this.clients, function (client) {
                 return (!filter.Name || client.Name.indexOf(filter.Name) > -1)
                     && (!filter.Action || client.Action === filter.Action)
                     && (!filter.Addedby || client.Addedby.indexOf(filter.Addedby) > -1)
@@ -10,12 +10,12 @@
                     && (filter.Married === undefined || client.Married === filter.Married);
             });
         },
-        insertItem: function(insertingClient) {
+        insertItem: function (insertingClient) {
             this.clients.push(insertingClient);
         },
-        updateItem: function(updatingClient) { },
+        updateItem: function (updatingClient) { },
 
-        deleteItem: function(deletingClient) {
+        deleteItem: function (deletingClient) {
             var clientIndex = $.inArray(deletingClient, this.clients);
             this.clients.splice(clientIndex, 1);
         }
@@ -33,131 +33,131 @@
     ];
     db.clients = [
         {
-            "Image": "../assets/images/dashboard/product/1.jpg",
+            "Image": "../img/dashboard/product/1.jpg",
             "File Name": "Honor_Mobile.jpg",
             "Url": "http://www.assets/images/product/product/13.jpg",
         },
         {
-            "Image": "../assets/images/dashboard/product/2.jpg",
+            "Image": "../img/dashboard/product/2.jpg",
             "File Name": "Samsung_LED_TV.jpeg",
             "Url": "http://www.assets/images/electronics/product/12.jpg",
         },
         {
-            "Image": "../assets/images/dashboard/product/3.jpg",
+            "Image": "../img/dashboard/product/3.jpg",
             "File Name": "Motorola_Bluetooth.jpg",
             "Url": "http://www.assets/images/electronics/product/25.jpg",
         },
         {
-            "Image": "../assets/images/dashboard/product/4.jpg",
+            "Image": "../img/dashboard/product/4.jpg",
             "File Name": "headphones.jpg",
             "Url": "http://www.assets/images/electronics/product/16.jpg",
         },
         {
-            "Image": "../assets/images/dashboard/product/5.jpg",
+            "Image": "../img/dashboard/product/5.jpg",
             "File Name": "Apple_6s.jpeg",
             "Url": "http://www.assets/images/electronics/product/21.jpg",
         },
         {
-            "Image": "../assets/images/dashboard/product/6.jpg",
+            "Image": "../img/dashboard/product/6.jpg",
             "File Name": "Printer.jpeg",
             "Url": "http://www.assets/images/electronics/product/3.jpg",
         },
         {
-            "Image": "../assets/images/dashboard/product/7.jpg",
+            "Image": "../img/dashboard/product/7.jpg",
             "File Name": "Canon_Camera.jpg",
             "Url": "http://www.assets/images/electronics/product/14.jpg",
-        },{
-            "Image": "../assets/images/dashboard/product/8.jpg",
+        }, {
+            "Image": "../img/dashboard/product/8.jpg",
             "File Name": "High_Quality_Headphones.jpg",
             "Url": "http://www.assets/images/electronics/product/20.jpg",
         },
         {
-            "Image": "../assets/images/dashboard/product/9.jpg",
+            "Image": "../img/dashboard/product/9.jpg",
             "File Name": "Home_Theater_Speakers.jpg",
             "Url": "http://www.assets/images/electronics/product/19.jpg",
         },
         {
-            "Image": "../assets/images/dashboard/product/10.jpg",
+            "Image": "../img/dashboard/product/10.jpg",
             "File Name": "Diamond_Ring.jpg",
             "Url": "http://www.assets/images/jewellery/pro/18.jpg",
         },
         {
-            "Image": "../assets/images/dashboard/product/11.jpg",
+            "Image": "../img/dashboard/product/11.jpg",
             "File Name": "Diamond_Nacklace.jpeg",
             "Url": "http://www.assets/images/jewellery/pro/12.jpg",
         },
         {
-            "Image": "../assets/images/dashboard/product/12.jpg",
+            "Image": "../img/dashboard/product/12.jpg",
             "File Name": "Diamond_Earrings.jpeg",
             "Url": "http://www.assets/images/jewellery/pro/26.jpg",
         },
         {
-            "Image": "../assets/images/dashboard/product/13.jpg",
+            "Image": "../img/dashboard/product/13.jpg",
             "File Name": "Night_lamp.jpg",
             "Url": "http://www.assets/images/furniture/8.jpg",
         },
         {
-            "Image": "../assets/images/dashboard/product/14.jpg",
+            "Image": "../img/dashboard/product/14.jpg",
             "File Name": "men's_shoes.jpg",
             "Url": "http://www.assets/images/cat3.png",
         },
         {
-            "Image": "../assets/images/dashboard/product/15.jpg",
+            "Image": "../img/dashboard/product/15.jpg",
             "File Name": "Ledi's_red_top.jpeg",
             "Url": "http://www.assets/images/fashion/product/12.jpg",
         },
         {
-            "Image": "../assets/images/dashboard/product/16.jpg",
+            "Image": "../img/dashboard/product/16.jpg",
             "File Name": "latest_ledis_shoes.jpg",
             "Url": "http://www.assets/images/fashion/pro/shoes.jpg",
         },
         {
-            "Image": "../assets/images/dashboard/product/17.jpg",
+            "Image": "../img/dashboard/product/17.jpg",
             "File Name": "Apple_6s.jpeg",
             "Url": "http://www.assets/images/electronics/product/21.jpg",
         },
         {
-            "Image": "../assets/images/dashboard/product/18.jpg",
+            "Image": "../img/dashboard/product/18.jpg",
             "File Name": "Printer.jpg",
             "Url": "http://www.assets/images/electronics/product/3.jpg",
         },
         {
-            "Image": "../assets/images/dashboard/product/19.jpg",
+            "Image": "../img/dashboard/product/19.jpg",
             "File Name": "High_Quality_Headphones.jpg",
             "Url": "http://www.assets/images/electronics/product/20.jpg",
         },
         {
-            "Image": "../assets/images/dashboard/product/20.jpg",
+            "Image": "../img/dashboard/product/20.jpg",
             "File Name": "Motorola_Bluetooth.jpg",
             "Url": "http://www.assets/images/electronics/product/25.jpg",
         },
         {
-            "Image": "../assets/images/dashboard/product/1.jpg",
+            "Image": "../img/dashboard/product/1.jpg",
             "File Name": "latest_ledis_shoes.jpeg",
             "Url": "http://www.assets/images/fashion/pro/shoes.jpg",
         },
         {
-            "Image": "../assets/images/dashboard/product/2.jpg",
+            "Image": "../img/dashboard/product/2.jpg",
             "File Name": "Woman_one_pis.jpg",
             "Url": "http://www.assets/images/fashion/pro/06.jpg",
         },
         {
-            "Image": "../assets/images/dashboard/product/3.jpg",
+            "Image": "../img/dashboard/product/3.jpg",
             "File Name": "Mouse.jpg",
             "Url": "http://www.assets/images/electronics/product/9.jpg",
         },
         {
-            "Image": "../assets/images/dashboard/product/4.jpg",
+            "Image": "../img/dashboard/product/4.jpg",
             "File Name": "Coffee_maker.jpg",
             "Url": "http://www.assets/images/electronics/product/6.jpg",
         },
         {
-            "Image": "../assets/images/dashboard/product/5.jpg",
+            "Image": "../img/dashboard/product/5.jpg",
             "File Name": "Diamond_Nacklace.jpg",
             "Url": "http://www.assets/images/jewellery/pro/12.jpg",
         },
         {
-            "Image": "../assets/images/dashboard/product/6.jpg",
+            "Image": "../img/dashboard/product/6.jpg",
             "File Name": "Honor_Mobile.jpg",
             "Url": "http://www.assets/images/electronics/product/13.jpg",
         },

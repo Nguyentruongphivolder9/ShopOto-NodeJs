@@ -1,8 +1,8 @@
 'use strict';
-(function() {
+(function () {
     var db = {
-        loadData: function(filter) {
-            return $.grep(this.clients, function(client) {
+        loadData: function (filter) {
+            return $.grep(this.clients, function (client) {
                 return (!filter.Name || client.Name.indexOf(filter.Name) > -1)
                     && (!filter.Action || client.Action === filter.Action)
                     && (!filter.ProductCategory || client.ProductCategory.indexOf(filter.ProductCategory) > -1)
@@ -10,12 +10,12 @@
                     && (filter.Married === undefined || client.Married === filter.Married);
             });
         },
-        insertItem: function(insertingClient) {
+        insertItem: function (insertingClient) {
             this.clients.push(insertingClient);
         },
-        updateItem: function(updatingClient) { },
+        updateItem: function (updatingClient) { },
 
-        deleteItem: function(deletingClient) {
+        deleteItem: function (deletingClient) {
             var clientIndex = $.inArray(deletingClient, this.clients);
             this.clients.splice(clientIndex, 1);
         }
@@ -34,63 +34,63 @@
     db.clients = [
         {
             "Id": "21",
-            "Product": "../assets/images/digital-product/web-dev.jpg",
+            "Product": "../img/digital-product/web-dev.jpg",
             "Product Title": "Websites",
             "Entry Type": "Add",
             "Quantity": "5",
         },
         {
             "Id": "172",
-            "Product": "../assets/images/digital-product/3d-design.jpg",
+            "Product": "../img/digital-product/3d-design.jpg",
             "Product Title": "3D Impact",
             "Entry Type": "Destroy",
             "Quantity": "11",
         },
         {
             "Id": "124",
-            "Product": "../assets/images/digital-product/graphic-design.png",
+            "Product": "../img/digital-product/graphic-design.png",
             "Product Title": "Graphic Design",
             "Entry Type": "Destroy",
             "Quantity": "154",
         },
         {
             "Id": "37",
-            "Product": "../assets/images/digital-product/logo.jpg",
+            "Product": "../img/digital-product/logo.jpg",
             "Product Title": "Company Logo",
             "Entry Type": "Destroy",
             "Quantity": "1",
         },
         {
             "Id": "67",
-            "Product": "../assets/images/digital-product/application.jpg",
+            "Product": "../img/digital-product/application.jpg",
             "Product Title": "Application",
             "Entry Type": "Add",
             "Quantity": "24",
         },
         {
             "Id": "74",
-            "Product": "../assets/images/digital-product/php.png",
+            "Product": "../img/digital-product/php.png",
             "Product Title": "Php",
             "Entry Type": "Destroy",
             "Quantity": "1",
         },
         {
             "Id": "427",
-            "Product": "../assets/images/digital-product/html.png",
+            "Product": "../img/digital-product/html.png",
             "Product Title": "Html",
             "Entry Type": "Destroy",
             "Quantity": "27",
         },
         {
             "Id": "142",
-            "Product": "../assets/images/digital-product/css.jpg",
+            "Product": "../img/digital-product/css.jpg",
             "Product Title": "Css",
             "Entry Type": "Add",
             "Quantity": "2",
         },
         {
             "Id": "58",
-            "Product": "../assets/images/digital-product/ebooks.png",
+            "Product": "../img/digital-product/ebooks.png",
             "Product Title": "Ebooks",
             "Entry Type": "Add",
             "Quantity": "4",
@@ -233,5 +233,5 @@
             "Product Title": "Solomon Green",
             "RegisterDate": "2013-09-04T01:44:47-07:00"
         }
-     ];
+    ];
 }());
