@@ -1,5 +1,4 @@
 const { Schema, default: mongoose } = require('mongoose');
-// const slug = require('mongoose-slug-updater');
 
 const productSchema = new Schema({
     _id: mongoose.Schema.Types.ObjectId,
@@ -25,15 +24,17 @@ const productSchema = new Schema({
         message:"Invalid image field format",
         required: [true,"Ảnh sản phẩm không được để trống"]
     }],
-    // slug: {
-    //     type: String,
-    //     slug: 'name',
-    //     unique: true,
-    // },
-}, {
+    description:{
+        type:String,
+        required:[true,"Mô tả sản phẩm không được để trống"]
+    },
+    hidden:{
+        type:Boolean,
+        default: false,
+    },
+}, 
+{
     timestamps: true,
 });
-
-// mongoose.plugin(slug);
 
 module.exports = mongoose.model('Product', productSchema);

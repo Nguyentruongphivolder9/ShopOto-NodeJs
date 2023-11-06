@@ -1,21 +1,23 @@
 const { Schema, default: mongoose } = require('mongoose');
 
 const brandSchema = new Schema({
-    _id: mongoose.Schema.Types.ObjectId,
+    id: mongoose.Schema.Types.ObjectId,
     brand_name:{
         type: String,
         required: [true,"Name is required!"],
         trim:true,
     },
-    brand_image:{
+    brand_img:{
         type:String,
         validator:function(v){
             return /\.(jpg|jpeg|png)$/i.test(v);
         },
-        message:"Invalid image format",
-        required:[true,"Image is required"]
+        message:"Invalid image field format",
+        required: [true,"Ảnh sản phẩm không được để trống"]
     },
-    timestamps: true,
+},
+{
+    timestamps:true,
 });
 
-module.exports = mongoose.model("Brands",brandSchema);
+module.exports = mongoose.model('Brand', brandSchema);

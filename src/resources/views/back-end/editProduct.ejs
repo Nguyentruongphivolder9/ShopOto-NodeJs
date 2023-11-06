@@ -29,38 +29,46 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Create Product</h5>
+                        <h5>Edit Product</h5>
                     </div>
                     <div class="card-body">
-                       <form action="/admin/product/createProduct" method="post" enctype="multipart/form-data">
+                       <form action="/admin/product/editProduct/<%= product._id %>" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="product_name">Product Name:</label>
-                            <input type="text" placeholder="Enter product name" name="product_name" class="form-control" value="<%= data? data.product_name: '' %>">
+                            <input type="text" placeholder="Enter product name" name="product_name" class="form-control" value="<%= product? product.product_name: '' %>">
                             <span class="text-danger error-message"></span>
                         </div>
                         <div class="form-group">
                             <label for="Price">Product Price:</label>
-                            <input type="number" placeholder="Enter product price" name="price" class="form-control" value="<%= data? data.price: '' %>">
+                            <input type="number" placeholder="Enter product price" name="price" class="form-control" value="<%= product? product.price: '' %>">
                             <span class="text-danger error-message"></span>
                         </div>
                         <div class="form-group">
                             <label for="description">Product Description:</label><br>
-                            <textarea name="description" placeholder="Enter product description" style="resize:none" id="description" cols="100" rows="3"></textarea>
+                            <textarea name="description" placeholder="Enter product description" style="resize:none" id="description" cols="100" rows="3" ><%= product? product.description: '' %></textarea>
                             <span class="text-danger error-message"></span>
                         </div>
                         <div class="form-group">
                             <label for="product_name">Product Images:</label>
                             <input type="file" name="image" class="form-control" multiple>
                             <span class="text-danger error-message"></span>
-                        </div>
-                        <p class="image-label">New Images:</p>
-                        <div class="mt-2 new-image">
-                            <img id="image-preview" src="" alt="Image Preview" style="display: none; max-width: 100px;">
+                            <% if(product && product.image && product.image.length > 0) { %>
+                                <div class="mt-2">
+                                    <p>Current Images:</p>
+                                    <% product.image.forEach(image => { %>
+                                        <img src="<%= image %>" alt="Current Image" width="100px" class="img-thumbnail"> 
+                                    <% }); %>
+                                </div>
+                            <% } %>
+                            <p class="image-label">New Images:</p>
+                                <div class="mt-2 new-image">
+                                  <img id="image-preview" src="" alt="Image Preview" style="display: none; max-width: 100px;">
+                                </div>
                         </div>
                         <div class="form-group">
-                            <input type="checkbox" name="hidden" id="hidden"> Put on store?
-                        </div>
-                        <button  type="submit" class="btn btn-info">Create Product</button>
+                            <input type="checkbox" name="hidden" id="hidden" <% if(product && product.hidden) {%> checked <% } %>> Put on store?
+                          </div>
+                        <button type="submit" class="btn btn-info">Edit Product</button>
                        </form>
                     </div>
                 </div>

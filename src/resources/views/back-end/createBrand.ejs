@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="page-header-left">
-                        <h3>Products
+                        <h3>Brand
                             <small>Bigdeal Admin panel</small>
                         </h3>
                     </div>
@@ -14,8 +14,8 @@
                 <div class="col-lg-6">
                     <ol class="breadcrumb pull-right">
                         <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
-                        <li class="breadcrumb-item">Products</li>
-                        <li class="breadcrumb-item active">Create Product</li>
+                        <li class="breadcrumb-item">Brands</li>
+                        <li class="breadcrumb-item active">Create Brand</li>
                     </ol>
                 </div>
             </div>
@@ -29,38 +29,25 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Create Product</h5>
+                        <h5>Create Brand</h5>
                     </div>
                     <div class="card-body">
-                       <form action="/admin/product/createProduct" method="post" enctype="multipart/form-data">
+                       <form action="/admin/brand/createBrand" method="post" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label for="product_name">Product Name:</label>
-                            <input type="text" placeholder="Enter product name" name="product_name" class="form-control" value="<%= data? data.product_name: '' %>">
+                            <label for="brand_name">Brand Name:</label>
+                            <input type="text" placeholder="Enter product name" name="brand_name" class="form-control" value="<%= data? data.brand_name: '' %>">
                             <span class="text-danger error-message"></span>
                         </div>
                         <div class="form-group">
-                            <label for="Price">Product Price:</label>
-                            <input type="number" placeholder="Enter product price" name="price" class="form-control" value="<%= data? data.price: '' %>">
-                            <span class="text-danger error-message"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="description">Product Description:</label><br>
-                            <textarea name="description" placeholder="Enter product description" style="resize:none" id="description" cols="100" rows="3"></textarea>
-                            <span class="text-danger error-message"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="product_name">Product Images:</label>
-                            <input type="file" name="image" class="form-control" multiple>
+                            <label for="brand_img">Brand Images:</label>
+                            <input type="file" name="brand_img" class="form-control">
                             <span class="text-danger error-message"></span>
                         </div>
                         <p class="image-label">New Images:</p>
                         <div class="mt-2 new-image">
                             <img id="image-preview" src="" alt="Image Preview" style="display: none; max-width: 100px;">
                         </div>
-                        <div class="form-group">
-                            <input type="checkbox" name="hidden" id="hidden"> Put on store?
-                        </div>
-                        <button  type="submit" class="btn btn-info">Create Product</button>
+                        <button type="submit" class="btn btn-info">Create Brand</button>
                        </form>
                     </div>
                 </div>
@@ -72,3 +59,5 @@
 </div>
 
 <script src="/js/product/ImageHandling.js"></script>
+
+

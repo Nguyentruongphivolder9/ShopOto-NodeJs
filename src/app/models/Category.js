@@ -1,7 +1,7 @@
 const { Schema, default: mongoose } = require('mongoose');
 
 const categorySchema = new Schema({
-    _id: mongoose.Schema.Types.ObjectId,
+    id: mongoose.Schema.Types.ObjectId,
     brandId:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Brand',
@@ -11,16 +11,22 @@ const categorySchema = new Schema({
         require: [true, "Category name can't be empty."],
         trim: true,
     },
-    image_cate: {
-        type: String,
-        validate: {
-            validator: function (v) {
-                return /\.(jpg|jpeg|png)$/i.test(v);
-            },
-            message: (props) => `${props.value} allow type: jpg, jpeg, png`
+    cate_img:{
+        type:String,
+        validator:function(v){
+            return /\.(jpg|jpeg|png)$/i.test(v);
         },
-        required: [true, 'Image is required']
-    }
+        message:"Invalid image field format",
+        required: [true,"Ảnh sản phẩm không được để trống"]
+    },
+    description:{
+        type:String,
+        required:[true,"Mô tả sản phẩm không được để trống"]
+    },
+    hidden:{
+        type:Boolean,
+        default: false,
+    },
 }, {
     timestamps: true,
 });
