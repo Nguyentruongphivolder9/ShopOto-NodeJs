@@ -1,0 +1,18 @@
+/* Error: Expected whitespace.
+ *     ,
+ * 127 | @media only screen and(-webkit-min-device-pixel-ratio:2),only screen and(min-device-pixel-ratio:2) {
+ *     |                       ^
+ *     '
+ *   src\resources\scss\back-end\jsgrid\_jsgrid-theme.scss 127:23  @import
+ *   src\resources\scss\back-end\jsgrid.scss 3:9                   root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Expected whitespace.\a     \2577 \a 127 \2502  @media only screen and(-webkit-min-device-pixel-ratio:2),only screen and(min-device-pixel-ratio:2) {\d\a     \2502                        ^\a     \2575 \a   src\\resources\\scss\\back-end\\jsgrid\\_jsgrid-theme.scss 127:23  @import\a   src\\resources\\scss\\back-end\\jsgrid.scss 3:9                   root stylesheet";
+}
