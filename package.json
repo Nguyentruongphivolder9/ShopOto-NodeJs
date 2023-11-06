@@ -5,7 +5,6 @@
   "main": "src/app.js",
   "scripts": {
     "start": "concurrently \"nodemon src/app.js\" \"sass src/resources/scss:src/public/css --watch\"",
-    "watch": "node-sass --include-path --indent-type --indent-width --follow --watch src/resources/scss/style.scss src/public/css/style.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
