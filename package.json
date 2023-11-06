@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/app.js",
   "scripts": {
-    "start": "nodemon src/app.js",
+    "start": "concurrently \"nodemon src/app.js\" \"sass src/resources/scss:src/public/css --watch\"",
     "watch": "node-sass --include-path --indent-type --indent-width --follow --watch src/resources/scss/style.scss src/public/css/style.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,7 +21,8 @@
     "multer": "^1.4.5-lts.1"
   },
   "devDependencies": {
-    "node-sass": "^9.0.0",
-    "nodemon": "^3.0.1"
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.1",
+    "sass": "^1.69.5"
   }
 }

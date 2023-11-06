@@ -4,7 +4,7 @@ const path = require("path");
 const app = express();
 const PORT = 3005;
 
-const routers = require('./routers')
+const routers = require('./routers');
 const db = require('./config/db');
 db.connect();
 

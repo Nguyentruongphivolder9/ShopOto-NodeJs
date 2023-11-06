@@ -1,8 +1,8 @@
 'use strict';
-(function() {
+(function () {
     var db = {
-        loadData: function(filter) {
-            return $.grep(this.clients, function(client) {
+        loadData: function (filter) {
+            return $.grep(this.clients, function (client) {
                 return (!filter.Name || client.Name.indexOf(filter.Name) > -1)
                     && (!filter.Action || client.Action === filter.Action)
                     && (!filter.ProductCategory || client.ProductCategory.indexOf(filter.ProductCategory) > -1)
@@ -10,12 +10,12 @@
                     && (filter.Married === undefined || client.Married === filter.Married);
             });
         },
-        insertItem: function(insertingClient) {
+        insertItem: function (insertingClient) {
             this.clients.push(insertingClient);
         },
-        updateItem: function(updatingClient) { },
+        updateItem: function (updatingClient) { },
 
-        deleteItem: function(deletingClient) {
+        deleteItem: function (deletingClient) {
             var clientIndex = $.inArray(deletingClient, this.clients);
             this.clients.splice(clientIndex, 1);
         }
@@ -33,35 +33,35 @@
     ];
     db.clients = [
         {
-            "Image": "../assets/images/digital-product/graphic-design.png",
+            "Image": "../img/digital-product/graphic-design.png",
             "Name": "Graphic Design",
             "Price": "$57.00",
             "Status": "<i class=\"fa fa-circle font-success f-12\"></i>",
             "Category": "Digital",
         },
         {
-            "Image": "../assets/images/digital-product/ebooks.png",
+            "Image": "../img/digital-product/ebooks.png",
             "Name": "eBooks",
             "Price": "$472.00",
             "Status": "<i class=\"fa fa-circle font-warning f-12\"></i>",
             "Category": "Digital",
         },
         {
-            "Image": "../assets/images/digital-product/lecture-video-recorder.jpg",
+            "Image": "../img/digital-product/lecture-video-recorder.jpg",
             "Name": "Recorded lectures",
             "Price": "$54.00",
             "Status": "<i class=\"fa fa-circle font-success f-12\"></i>",
             "Category": "Digital",
         },
         {
-            "Image": "../assets/images/digital-product/application.jpg",
+            "Image": "../img/digital-product/application.jpg",
             "Name": "Application",
             "Price": "$578.00",
             "Status": "<i class=\"fa fa-circle font-danger f-12\"></i>",
             "Category": "Digital",
         },
         {
-            "Image": "../assets/images/digital-product/web-dev.jpg",
+            "Image": "../img/digital-product/web-dev.jpg",
             "Name": "Websites",
             "Price": "$5764.00",
             "Status": "<i class=\"fa fa-circle font-warning f-12\"></i>",
