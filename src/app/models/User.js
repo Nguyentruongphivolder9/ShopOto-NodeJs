@@ -1,6 +1,8 @@
 const { Schema, default: mongoose } = require('mongoose');
 const UserSchema = new Schema(
     {
+        user_id: { type: String, require: [true, 'user_id cannot null.'] },
+
         username: {
             type: String,
             required: [true, 'Username is required'],

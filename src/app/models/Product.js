@@ -3,6 +3,7 @@ const slug = require('mongoose-slug-updater');
 
 const productSchema = new Schema(
     {
+        product_id: { type: String, require: [true, 'Product_id cannot not null.'] },
         product_name: {
             type: String,
             required: [true, 'Product name is not empty!'],
@@ -20,10 +21,16 @@ const productSchema = new Schema(
                 message: () => 'Lỗi định dạng',
             },
         },
-        categoryId: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'categories',
+        category_id: {
+            type: String,
+            ref: 'Category',
         },
+
+        brand_id: {
+            type: String,
+            ref: 'Brand',
+        },
+
         price: {
             type: Number,
             required: [true, 'Giá sản phẩm không được để trống'],
@@ -49,11 +56,11 @@ const productSchema = new Schema(
                 message: (props) => `${props.path} contains sensitive words!`,
             },
         },
-        slug: {
-            type: String,
-            slug: 'product_name',
-            unique: true,
-        },
+        // slug: {
+        //     type: String,
+        //     slug: 'product_name',
+        //     unique: true,
+        // },
     },
     {
         timestamps: true,
