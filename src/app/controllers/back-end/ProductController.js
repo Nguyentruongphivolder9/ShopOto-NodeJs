@@ -1,6 +1,7 @@
 const fs = require("fs")
 const Product = require("../../models/Product");
 const { mongo, default: mongoose } = require("mongoose");
+const slugify = require("slug");
 
 class ProductController {
     async getAllProducts(req, res) {
@@ -26,6 +27,19 @@ class ProductController {
         }
 
         const imageUrls = images.map(file => `/img/product/${file.filename}`);
+        let slug = slugify(product_name,{lower:true});
+        console.log(slug);
+        let count = 1;
+
+        while(true){
+            const existProduct = await Product.findOne({slug});
+            if(!existProduct){
+                break;
+            }
+            slug = `${slug}-${count}`;
+            count++;
+        }
+
 
         const dataSubmit = {
             _id: new mongoose.Types.ObjectId(),
@@ -34,7 +48,9 @@ class ProductController {
             image: imageUrls,
             description: description,
             hidden: hidden,
+            slug:slug,
         };
+
 
         await Product.create(dataSubmit).then(result => {
             req.session.message = "Product created successfully";
@@ -62,6 +78,10 @@ class ProductController {
         if(images && images.length > 0) {
             const imageUrls = images.map(file => `/img/product/${file.filename}`);
             product.image = imageUrls;
+        }
+
+        if(product.isModified('product_name')){
+            product.slug = slugify(product_name,{lower:true});
         }
 
         await product.save();

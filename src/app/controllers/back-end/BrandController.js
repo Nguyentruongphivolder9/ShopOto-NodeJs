@@ -20,7 +20,9 @@ class brandController {
 
         const brandFolderPath = './src/public/img/brand/';
 
+    
         if(!fs.existsSync(brandFolderPath)){
+            console.log(123);
             fs.mkdirSync(brandFolderPath,{recursive:true});
         }
 

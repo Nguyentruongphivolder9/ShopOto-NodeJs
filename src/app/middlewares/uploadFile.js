@@ -1,6 +1,10 @@
 const multer = require("multer");
+const fs = require("fs");
 
 const createStorage = (destination) =>{
+    if(!fs.existsSync(destination)){
+        fs.mkdirSync(destination,{recursive:true});
+    }
     return multer.diskStorage({
         destination: (req,file,cb) =>{
             cb(null,destination);

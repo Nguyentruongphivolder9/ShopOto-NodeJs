@@ -1,4 +1,5 @@
 const { Schema, default: mongoose } = require('mongoose');
+const slug = require('mongoose-slug-updater');
 
 const productSchema = new Schema({
     _id: mongoose.Schema.Types.ObjectId,
@@ -32,9 +33,16 @@ const productSchema = new Schema({
         type:Boolean,
         default: false,
     },
+    slug: {
+        type: String,
+        slug: 'name',
+        unique: true
+    },
 }, 
 {
     timestamps: true,
 });
+
+productSchema.plugin(slug);
 
 module.exports = mongoose.model('Product', productSchema);
