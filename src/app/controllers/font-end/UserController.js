@@ -22,29 +22,30 @@ class UserController {
             req.session.user = user ;
             return res.redirect('/user');
         }else{
-            return res.render('login' , { layout: false , error: 'Fail!'  , data : { email , password }});
+            return res.render('login' , { layout: false , error: 'Login Fail!'  , data : { email , password }});
         }
     }
 
-    async createFromUser (req, res)  {
+// Xử lý tạo mới user
+async checkRegister  (req, res) {
         const data = req.body;
         await User.create(data)
-            // .save()
-            .then(() => {
-                req.session.message = "Register successfully";
-                res.redirect("/user"); 
-            })
-            .catch(err => {
-                if(err.name === 'ValidationError'){
-                    let errors = {};
-                    for(const field in err.errors){
-                        errors[field] = err.errors[field].message;
-                    }
-                    res.render('create', {errors, data});
+        .then(() => {
+            req.session.message = "User created successfully";
+            res.redirect("/user"); 
+        })
+        .catch(err => {
+            if(err.name === 'ValidationError'){
+                let errors = {};
+                for(const field in err.errors){
+                    errors[field] = err.errors[field].message;
                 }
-            })
-        
-    }
+                res.render('register', { layout: false ,errors, data});
+            }
+        })
+}
+
+
 
 
 }
