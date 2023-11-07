@@ -48,11 +48,7 @@
                                     <td><%= new Date(item.updatedAt).toLocaleDateString() %></td>
                                     <td>
                                         <a href="/admin/brand/editBrand/<%= item.id %>" class="badge badge-success">Edit</a>
-                                        <% if(item.hidden) { %>
-                                            <a href="/admin/brand/showBrand/<%= item.id %>" class="badge badge-info">Show</a>
-                                        <% } else { %>
-                                            <a href="/admin/brand/showBrand/<%= item.id %>" class="badge badge-danger">Hidden</a>
-                                        <% } %>
+                                        <a href="#" class="badge badge-info">View Details</a>
                                     </td>
                                 </tr>
                                 <% }) %>
