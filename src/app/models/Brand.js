@@ -1,11 +1,11 @@
 const { Schema, default: mongoose } = require('mongoose');
 
-const categorySchema = new Schema(
+const brandSchema = new Schema(
     {
-        category_id: { type: String, require: [true, 'category_id.'] },
-        category_name: {
+        brand_id: { type: String, require: [true, 'Brand_id.'] },
+        brand_name: {
             type: String,
-            require: [true, 'Category name is not empty.'],
+            require: [true, 'Brand name is not empty.'],
             trim: true,
             validate: {
                 validator: function (v) {
@@ -20,7 +20,7 @@ const categorySchema = new Schema(
                 message: () => 'Lỗi định dạng',
             },
         },
-        image_cate: {
+        image_brand: {
             type: String,
             validate: {
                 validator: function (v) {
@@ -36,4 +36,4 @@ const categorySchema = new Schema(
     },
 );
 
-module.exports = mongoose.model('Category', categorySchema);
+module.exports = mongoose.model('Brand', brandSchema);
