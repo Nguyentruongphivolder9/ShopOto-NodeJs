@@ -34,7 +34,7 @@ const productSchema = new Schema({
         type:String,
         required:[true,"Mô tả sản phẩm không được để trống"]
     },
-    hidden:{
+    on_store:{
         type:Boolean,
         default: false,
     },

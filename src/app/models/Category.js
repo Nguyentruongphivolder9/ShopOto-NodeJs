@@ -7,7 +7,7 @@ const categorySchema = new Schema({
         default: shortid.generate,
         unique:true,
     },
-    brandId:{
+    brand_id:{
         type:String,
         ref:'Brand',
     },
@@ -28,7 +28,7 @@ const categorySchema = new Schema({
         type:String,
         required:[true,"Mô tả sản phẩm không được để trống"]
     },
-    hidden:{
+    on_store:{
         type:Boolean,
         default: false,
     },

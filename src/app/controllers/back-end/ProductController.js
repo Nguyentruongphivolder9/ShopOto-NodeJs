@@ -44,7 +44,7 @@ class ProductController {
             price: price,
             image: imageUrls,
             description: description,
-            hidden: hidden,
+            on_store: hidden,
             slug:slug,
         };
 
@@ -74,12 +74,14 @@ class ProductController {
         const productID = req.params.product_id;
         let{product_name,price,description} = req.body;
         const images = req.files;
+        const hidden = req.body.hidden === "on";
 
         const product = await Product.findOne({product_id: productID});
 
         product.product_name = product_name;
         product.price = price;
         product.description = description;
+        product.on_store = hidden;
 
         if(images && images.length > 0) {
             const imageUrls = images.map(file => `/img/product/${file.filename}`);
