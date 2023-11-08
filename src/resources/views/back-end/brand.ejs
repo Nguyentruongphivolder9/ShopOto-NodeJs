@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="page-header-left">
-                        <h3>Products
+                        <h3>Brands
                             <small>Bigdeal Admin panel</small>
                         </h3>
                     </div>
@@ -14,7 +14,7 @@
                     <ol class="breadcrumb pull-right">
                         <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
                         <li class="breadcrumb-item">Brand</li>
-                        <li class="breadcrumb-item active">Brand List</li>
+                        <li class="breadcrumb-item active">Brands List</li>
                     </ol>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                                     <td><%= item.brand_name %></td>
                                     <td><%= new Date(item.updatedAt).toLocaleDateString() %></td>
                                     <td>
-                                        <a href="/admin/brand/editBrand/<%= item.id %>" class="badge badge-success">Edit</a>
+                                        <a href="/admin/brand/editBrand/<%= item.brand_id %>" class="badge badge-success">Edit</a>
                                         <a href="#" class="badge badge-info">View Details</a>
                                     </td>
                                 </tr>

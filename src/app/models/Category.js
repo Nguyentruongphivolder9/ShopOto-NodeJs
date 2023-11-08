@@ -1,12 +1,17 @@
 const { Schema, default: mongoose } = require('mongoose');
+const shortid = require('shortid');
 
 const categorySchema = new Schema({
-    id: mongoose.Schema.Types.ObjectId,
+    category_id: {
+        type:String,
+        default: shortid.generate,
+        unique:true,
+    },
     brandId:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Brand',
     },
-    category_name: {
+    cate_name: {
         type: String,
         require: [true, "Category name can't be empty."],
         trim: true,
@@ -19,7 +24,7 @@ const categorySchema = new Schema({
         message:"Invalid image field format",
         required: [true,"Ảnh sản phẩm không được để trống"]
     },
-    description:{
+    cate_description:{
         type:String,
         required:[true,"Mô tả sản phẩm không được để trống"]
     },

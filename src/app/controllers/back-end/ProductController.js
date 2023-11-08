@@ -1,7 +1,7 @@
-const fs = require("fs")
 const Product = require("../../models/Product");
 const { mongo, default: mongoose } = require("mongoose");
 const slugify = require("slug");
+const shortid = require("shortid");
 
 class ProductController {
     async getAllProducts(req, res) {
@@ -19,18 +19,24 @@ class ProductController {
         let { product_name, price,description } = req.body;
         const images = req.files;
         const hidden = req.body.hidden === "on";
-
-        const productFolderPath = './public/img/product';
-
-        if (!fs.existsSync(productFolderPath)) {
-            fs.mkdirSync(productFolderPath, { recursive: true });
-        }
+        const product_id = shortid.generate();
 
         const imageUrls = images.map(file => `/img/product/${file.filename}`);
 
-        const slug = slugify(product_name, { lower: true, remove: /[*+~.()'"!:@]/g });
+        let slug = slugify(product_name, { lower: true, remove: /[*+~.()'"!:@]/g });
+        let count = 1;
+
+        while(true){
+            const existProduct = await Product.findOne({slug});
+            if(!existProduct){
+                break;
+            }
+            slug = `${slug}-${count}`;
+            count++
+        }
 
         const dataSubmit = {
+            product_id : product_id,
             product_name: product_name,
             price: price,
             image: imageUrls,
@@ -55,18 +61,18 @@ class ProductController {
         })
     }
     async getFormEdit(req,res){
-        const productID = req.params.id;
-        const product = await Product.findById(productID);
+        const productID = req.params.product_id;
+        const product = await Product.findOne({product_id: productID});
 
         res.render('back-end/editProduct',{admin:true,product,err:null});
     }
     
     async editProduct(req,res){
-        const productID = req.params.id;
+        const productID = req.params.product_id;
         let{product_name,price,description} = req.body;
         const images = req.files;
 
-        const product = await Product.findById(productID);
+        const product = await Product.findOne({product_id: productID});
 
         product.product_name = product_name;
         product.price = price;
@@ -78,7 +84,7 @@ class ProductController {
         }
 
         if(product.isModified('product_name')){
-            product.slug = `${slugify(product_name,{lower:true})}.P${product_id}`;
+             product.slug = slugify(product_name, { lower: true, remove: /[*+~.()'"!:@]/g });
         }
 
         await product.save();
@@ -87,8 +93,8 @@ class ProductController {
     }
 
     async showProduct(req,res){
-        const productID = req.params.id;
-        const product = await Product.findById(productID);
+        const productID = req.params.product_id;
+        const product = await Product.findOne({product_id: productID});
 
         if(product){
             product.hidden = !product.hidden;

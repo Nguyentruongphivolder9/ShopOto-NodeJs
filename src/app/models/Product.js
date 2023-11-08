@@ -1,10 +1,15 @@
 const { Schema, default: mongoose } = require('mongoose');
 const slug = require('mongoose-slug-updater');
+const shortid = require('shortid');
 
 const productSchema = new Schema({
-    _id: mongoose.Schema.Types.ObjectId,
+    product_id: {
+        type:String,
+        default: shortid.generate,
+        unique:true,
+    },
     categoryId: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         ref: 'Category',
     },
     product_name:{

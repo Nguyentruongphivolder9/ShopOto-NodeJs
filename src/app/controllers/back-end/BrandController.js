@@ -1,6 +1,6 @@
-const fs = require("fs");
 const Brand = require('../../models/Brand');
 const { default: mongoose } = require("mongoose");
+const shortid = require("shortid");
 
 class brandController {
     async getAllBrand(req,res){
@@ -18,17 +18,9 @@ class brandController {
         let {brand_name} = req.body;
         const brand_img = req.file;
 
-        const brandFolderPath = './src/public/img/brand/';
-
-    
-        if(!fs.existsSync(brandFolderPath)){
-            console.log(123);
-            fs.mkdirSync(brandFolderPath,{recursive:true});
-        }
-
         const imageUrl = `/img/brand/${brand_img.filename}`;
         const dataSubmit = {
-            id: new mongoose.Types.ObjectId(),
+            brand_id: shortid.generate(),
             brand_name: brand_name,
             brand_img: imageUrl,
         };
@@ -40,18 +32,18 @@ class brandController {
     }
 
     async GetBrandEdit(req,res){
-        const brandID = req.params.id;
-        const brands = await Brand.findById(brandID);
+        const brandID = req.params.brand_id;
+        const brands = await Brand.findOne({brand_id: brandID});
 
         res.render('back-end/editBrand',{admin:true,brands,err:null});
     }
 
     async editBrand(req,res){
-        const brandID = req.params.id;
+        const brandID = req.params.brand_id;
         let {brand_name} = req.body;
         const brand_img = req.file;
         
-        const brand = await Brand.findById(brandID);
+        const brand = await Brand.findOne({brand_id: brandID});
 
         brand.brand_name = brand_name;
         

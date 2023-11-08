@@ -1,7 +1,12 @@
 const { Schema, default: mongoose } = require('mongoose');
+const shortid = require("shortid");
 
 const brandSchema = new Schema({
-    _id: mongoose.Schema.Types.ObjectId,
+    brand_id: {
+        type:String,
+        default: shortid.generate,
+        unique:true,
+    },
     brand_name:{
         type: String,
         required: [true,"Name is required!"],

@@ -32,7 +32,7 @@
                         <h5>Edit Brand</h5>
                     </div>
                     <div class="card-body">
-                       <form action="/admin/brand/editBrand/<%= brands._id %>" method="post" enctype="multipart/form-data">
+                       <form action="/admin/brand/editBrand/<%= brands.brand_id %>" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="brand_name">Brand Name:</label>
                             <input type="text" placeholder="Enter brand name" name="brand_name" class="form-control" value="<%= brands? brands.brand_name: '' %>">

@@ -32,7 +32,7 @@
                         <h5>Edit Product</h5>
                     </div>
                     <div class="card-body">
-                       <form action="/admin/product/editProduct/<%= product._id %>" method="post" enctype="multipart/form-data">
+                       <form action="/admin/product/editProduct/<%= product.product_id %>" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="product_name">Product Name:</label>
                             <input type="text" placeholder="Enter product name" name="product_name" class="form-control" value="<%= product? product.product_name: '' %>">
