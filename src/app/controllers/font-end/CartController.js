@@ -89,9 +89,15 @@ class CartController {
     }
 
     async handleFormAction(req, res) {
-        switch (req.body.actions) {
+        const { cartIds, actions } = req.body;
+        switch (actions) {
             case 'delete':
-                await Product.find({ product_id: { $in: productIds } });
+                await Cart.updateOne(
+                    { user_id: '123' },
+                    {
+                        $pull: { products: { product_id: { $in: cartIds } } }
+                    }
+                );
                 res.send("success")
                 break;
             case 'checkout':

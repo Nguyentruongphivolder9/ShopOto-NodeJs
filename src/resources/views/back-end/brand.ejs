@@ -1,0 +1,63 @@
+<div class="page-body">
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                        <h3>Brands
+                            <small>Bigdeal Admin panel</small>
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
+                        <li class="breadcrumb-item">Brand</li>
+                        <li class="breadcrumb-item active">Brands List</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Manage Brands</h5>
+                    </div>
+                    <div class="card-body order-datatable">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Logo</th>
+                                    <th>Brand</th>
+                                    <th>Date of issue</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% brands.forEach(item => { %> 
+                                <tr>
+                                    <td><img src="<%= item.brand_img %>" alt="image" width="100px" class="img-thumbnail"></td>
+                                    <td><%= item.brand_name %></td>
+                                    <td><%= new Date(item.updatedAt).toLocaleDateString() %></td>
+                                    <td>
+                                        <a href="/admin/brand/editBrand/<%= item.brand_id %>" class="badge badge-success">Edit</a>
+                                        <a href="#" class="badge badge-info">View Details</a>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>
