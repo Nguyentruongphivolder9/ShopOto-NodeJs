@@ -60,6 +60,21 @@ class CateController {
         req.session.message = "Category updated successfully";
         res.redirect("/admin/category");
     }
+
+    async showCategory(req, res) {
+        const CateID = req.params.category_id;
+        const cate = await Cate.findOne({ category_id: CateID });
+
+        if (cate) {
+            cate.hidden = !cate.hidden;
+            await cate.save()
+
+            req.session.message = cate.hidden ? "Category is hidden" : "Category is showing";
+        } else {
+            req.session.message = "Category is not found";
+        }
+        res.redirect("/admin/category");
+    }
 }
 
 module.exports = new CateController;
