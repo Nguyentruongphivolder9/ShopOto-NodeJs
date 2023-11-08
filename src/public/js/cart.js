@@ -10,26 +10,15 @@ $(document).ready(function (e) {
     addToCart.click(function () {
         const id = $(this).data('id');
         $.ajax({
-            url: `/cart/add/${id}`,
-            method: "POST"
+            url: `/cart/add`,
+            method: "POST",
+            data: { id: id, quantity: 1 }
         }).done(function (status) {
             messages(status);
         }).fail(function (jqXHR, textStatus, errorThrown) {
             console.log(textStatus + ': ' + errorThrown);
         })
     })
-
-    deleteCart.on("click", function () {
-        const id = $(this).data('id');
-        $.ajax({
-            url: `/cart/delete/${id}`,
-            method: "POST"
-        }).done(function (status) {
-            messages(status);
-        }).fail(function (jqXHR, textStatus, errorThrown) {
-            console.log(textStatus + ': ' + errorThrown);
-        })
-    });
 
     function messages(messages) {
         switch (messages) {
