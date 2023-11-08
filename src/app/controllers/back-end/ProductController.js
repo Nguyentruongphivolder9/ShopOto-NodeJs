@@ -27,22 +27,10 @@ class ProductController {
         }
 
         const imageUrls = images.map(file => `/img/product/${file.filename}`);
-        let slug = slugify(product_name,{lower:true});
-        console.log(slug);
-        let count = 1;
 
-        while(true){
-            const existProduct = await Product.findOne({slug});
-            if(!existProduct){
-                break;
-            }
-            slug = `${slug}-${count}`;
-            count++;
-        }
-
+        const slug = slugify(product_name, { lower: true, remove: /[*+~.()'"!:@]/g });
 
         const dataSubmit = {
-            _id: new mongoose.Types.ObjectId(),
             product_name: product_name,
             price: price,
             image: imageUrls,
@@ -55,6 +43,15 @@ class ProductController {
         await Product.create(dataSubmit).then(result => {
             req.session.message = "Product created successfully";
             res.redirect("/admin/product");
+        })
+        .catch(err =>{
+            let errors = {};
+            if(err.name === "ValidationError"){
+                for(const field in err.errors){
+                    errors[field] = err.errors[field].message;
+                }
+                res.render('back-end/createProduct',{errors, data: dataSubmit});
+            }
         })
     }
     async getFormEdit(req,res){
@@ -81,7 +78,7 @@ class ProductController {
         }
 
         if(product.isModified('product_name')){
-            product.slug = slugify(product_name,{lower:true});
+            product.slug = `${slugify(product_name,{lower:true})}.P${product_id}`;
         }
 
         await product.save();
