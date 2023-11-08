@@ -32,27 +32,24 @@
                         <h5>Edit Category</h5>
                     </div>
                     <div class="card-body">
-                       <form action="/admin/category/editCategory/<%= Cates.category_id %>" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label for="category_name">Category Name:</label>
-                            <input type="text" placeholder="Enter category name" name="category_name" class="form-control" value="<%= Cates? Cates.cate_name: '' %>">
-                            <span class="text-danger error-message"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="description">Category Description:</label><br>
-                            <textarea name="description" placeholder="Enter category description" style="resize:none" id="description" cols="100" rows="3"><%= Cates? Cates.cate_description: '' %></textarea>
-                            <span class="text-danger error-message"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="brand_img">Category Images:</label>
-                            <input type="file" name="cate_img" class="form-control">
-                            <span class="text-danger error-message"></span>
-                            <% if(Cates && Cates.cate_img && Cates.cate_img.length > 0){ %>
-                                <div class="mt-2">
-                                    <p>Current Images:</p>
-                                    <img src="<%= Cates.cate_img %>" alt="Current Images" width="100px" class="img-thumbnail">
-                                </div>
-                                <% } %>
+                        <form action="/admin/category/createCategory" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="category_name">Category Name:</label>
+                                <input type="text" placeholder="Enter category name" name="category_name"
+                                    class="form-control" value="<%= data? data.cate_name: '' %>">
+                                <span class="text-danger error-message"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Category Description:</label><br>
+                                <textarea name="description" placeholder="Enter category description"
+                                    style="resize:none" id="description" cols="100" rows="3"></textarea>
+                                <span class="text-danger error-message"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="product_image">Category Images:</label>
+                                <input type="file" name="cate_img" class="form-control" multiple>
+                                <span class="text-danger error-message"></span>
+                            </div>
                             <p class="image-label">New Images:</p>
                             <div class="mt-2 new-image">
                              <img id="image-preview" src="" alt="Image Preview" style="display: none; max-width: 100px;">
