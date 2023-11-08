@@ -67,10 +67,10 @@
                         </div>
                         <select name="category_id" id="" required>
                             <option value="">Select Category</option>
-                            <% for (let category of categories){ %>
-                                <option value="<%= category.category_id %>"><%= category.cate_name %></option>
+                            <% for (let category of categories) { %>
+                                <option value="<%= category.category_id %>" <% if (category.category_id === product.category_id) { %>selected<% } %>><%= category.cate_name %></option>
                             <% } %>
-                      </select>
+                        </select>                        
                         <div class="form-group">
                             <input type="checkbox" name="hidden" id="hidden" <% if(product && product.on_store) {%> checked <% } %>> Put on store?
                           </div>
