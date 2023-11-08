@@ -9,7 +9,6 @@ class CartController {
             if (cart) {
                 const productIds = cart.products.map(product => product.product_id);
                 const products = await Product.find({ product_id: { $in: productIds } });
-                console.log(productIds);
 
                 res.render('font-end/shopping-cart', { admin: false, products });
             }
@@ -90,22 +89,37 @@ class CartController {
 
     async handleFormAction(req, res) {
         const { cartIds, actions } = req.body;
-        switch (actions) {
-            case 'delete':
-                await Cart.updateOne(
-                    { user_id: '123' },
-                    {
-                        $pull: { products: { product_id: { $in: cartIds } } }
+        if (!Array.isArray(cartIds)) {
+            return res.status(400).json({ message: 'cartIds should be an array' });
+        }
+
+        try {
+            switch (actions) {
+                case 'delete':
+                    console.log(cartIds);
+                    const result = await Cart.updateOne(
+                        { user_id: '123' },
+                        {
+                            $pull: { products: { product_id: { $in: cartIds } } }
+                        }
+                    );
+                    console.log(result);
+                    if (result.modifiedCount > 0) {
+                        res.send("success-deleted");
+                    } else {
+                        res.status(400).json({ message: 'No matching products found for deletion' });
                     }
-                );
-                res.send("success")
-                break;
-            case 'checkout':
-                console.log(req.body.cartIds);
-                res.send("oke")
-                break;
-            default:
-                res.json({ message: 'Action is invalid!' })
+                    break;
+                case 'checkout':
+                    console.log(cartIds);
+                    res.send("checkout");
+                    break;
+                default:
+                    res.status(400).json({ message: 'Action is invalid!' });
+            }
+        } catch (error) {
+            console.error(error);
+            res.status(500).send("An error occurred");
         }
     }
 }
