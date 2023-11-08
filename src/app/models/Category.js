@@ -8,7 +8,7 @@ const categorySchema = new Schema({
         unique:true,
     },
     brandId:{
-        type:mongoose.Schema.Types.ObjectId,
+        type:String,
         ref:'Brand',
     },
     cate_name: {

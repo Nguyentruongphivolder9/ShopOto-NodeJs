@@ -8,7 +8,7 @@ const productSchema = new Schema({
         default: shortid.generate,
         unique:true,
     },
-    categoryId: {
+    category_id: {
         type: String,
         ref: 'Category',
     },

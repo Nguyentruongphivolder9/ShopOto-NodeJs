@@ -1,4 +1,5 @@
 const Product = require("../../models/Product");
+const Cate = require("../../models/Category");
 const { mongo, default: mongoose } = require("mongoose");
 const slugify = require("slug");
 const shortid = require("shortid");
@@ -12,11 +13,12 @@ class ProductController {
             res.status(500).send('Error: Something went wrong while retrieving products.');
         }
     }
-    getFormCreate(req,res){
-        res.render('back-end/createProduct',{admin:true,data:null,err:null});
+    async getFormCreate(req,res){
+        const categories = await Cate.find();
+        res.render('back-end/createProduct',{admin:true,data:null,err:null,categories});
     }
     async createProduct(req, res) {
-        let { product_name, price,description } = req.body;
+        let { product_name, price,description,category_id } = req.body;
         const images = req.files;
         const hidden = req.body.hidden === "on";
         const product_id = shortid.generate();
@@ -38,6 +40,7 @@ class ProductController {
         const dataSubmit = {
             product_id : product_id,
             product_name: product_name,
+            category_id : category_id,
             price: price,
             image: imageUrls,
             description: description,
