@@ -1,3 +1,4 @@
+
 (function ($) {
     "use strict";
 
@@ -18,7 +19,6 @@
         $(window).resize(toggleNavbarMethod);
     });
 
-
     // Back to top button
     $(window).scroll(function () {
         if ($(this).scrollTop() > 100) {
@@ -27,11 +27,11 @@
             $('.back-to-top').fadeOut('slow');
         }
     });
+
     $('.back-to-top').click(function () {
         $('html, body').animate({ scrollTop: 0 }, 1500, 'easeInOutExpo');
         return false;
     });
-
 
     // Vendor carousel
     $('.vendor-carousel').owlCarousel({
@@ -59,7 +59,6 @@
         }
     });
 
-
     // Related carousel
     $('.related-carousel').owlCarousel({
         loop: true,
@@ -83,7 +82,6 @@
         }
     });
 
-
     // Product Quantity
     $('.quantity button').on('click', function () {
         var button = $(this);
@@ -91,10 +89,10 @@
         if (button.hasClass('btn-plus')) {
             var newVal = parseFloat(oldValue) + 1;
         } else {
-            if (oldValue > 0) {
+            if (oldValue > 1) {
                 var newVal = parseFloat(oldValue) - 1;
             } else {
-                newVal = 0;
+                newVal = 1;
             }
         }
         button.parent().parent().find('input').val(newVal);

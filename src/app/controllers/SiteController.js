@@ -1,11 +1,14 @@
 const Product = require('../models/Product');
 const Category = require('../models/Category');
+const { forEach } = require('lodash');
 
 class SiteController {
     async home(req, res, next) {
         try {
             const products = await Product.find({});
             const categories = await Category.find({});
+
+            console.log(products[0].image[0]);
 
             res.render('font-end/home', {
                 products,
@@ -19,6 +22,10 @@ class SiteController {
 
     checkout(req, res, next) {
         res.render('font-end/checkout', { admin: false });
+    }
+
+    login(req, res, next) {
+        res.render('login', { layout: false });
     }
 
     admin(req, res, next) {

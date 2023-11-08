@@ -50,10 +50,10 @@
                                     <td><%= new Date(item.updatedAt).toLocaleDateString() %></td>
                                     <td>
                                         <a href="/admin/category/editCategory/<%= item.category_id %>" class="badge badge-success">Edit</a>
-                                        <% if(item.hidden) { %>
-                                            <a href="/admin/category/showCategory/<%= item.category_id %>" class="badge badge-info">Show</a>
+                                        <% if(item.on_store) { %>
+                                            <a href="/admin/category/showCategory/<%= item.category_id %>" class="badge badge-info">Showing</a>
                                         <% } else { %>
-                                            <a href="/admin/category/showCategory/<%= item.category_id %>" class="badge badge-danger">Hidden</a>
+                                            <a href="/admin/category/showCategory/<%= item.category_id %>" class="badge badge-danger">Hiding</a>
                                         <% } %>
                                     </td>
                                 </tr>

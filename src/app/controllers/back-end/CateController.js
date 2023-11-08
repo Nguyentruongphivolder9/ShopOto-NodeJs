@@ -28,7 +28,7 @@ class CateController{
             brand_id: brand_id,
             cate_img: imageUrl,
             cate_description: description,
-            hidden:hidden,
+            on_store:hidden,
         };
 
         await Cate.create(dataSubmit).then(result =>{
@@ -40,20 +40,22 @@ class CateController{
     async getCategoryEdit(req,res){
         const CateID = req.params.category_id;
         const Cates = await Cate.findOne({category_id: CateID});
-
-        res.render('back-end/editCategory',{admin:true,Cates,err:null});
+        const Brands = await Brand.find({});
+        res.render('back-end/editCategory',{admin:true,Cates,err:null,Brands});
     }
 
     async editCate(req,res){
         const CateID = req.params.category_id;
-        let{category_name,description} = req.body;
-
+        let{category_name,description,brand_id,hidden} = req.body;
+        const cate_img = req.file;
         const cate = await Cate.findOne({category_id: CateID});
 
         cate.cate_name = category_name;
-        cate.cate_description = description
+        cate.cate_description = description;
+        cate.brand_id = brand_id;
+        cate.on_store = hidden === "on" ? true : false;
 
-        if(cate_img && cate_img.length > 0){
+        if(cate_img && cate_img.filename){
             const imageUrl = `/img/category/${cate_img.filename}`;
             cate.cate_img = imageUrl;
         }

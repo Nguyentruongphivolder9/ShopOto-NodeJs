@@ -65,14 +65,15 @@ class ProductController {
     }
     async getFormEdit(req,res){
         const productID = req.params.product_id;
+        const categories = await Cate.find();
         const product = await Product.findOne({product_id: productID});
 
-        res.render('back-end/editProduct',{admin:true,product,err:null});
+        res.render('back-end/editProduct',{admin:true,product,err:null,categories});
     }
     
     async editProduct(req,res){
         const productID = req.params.product_id;
-        let{product_name,price,description} = req.body;
+        let{product_name,price,description,category_id} = req.body;
         const images = req.files;
         const hidden = req.body.hidden === "on";
 
@@ -81,7 +82,8 @@ class ProductController {
         product.product_name = product_name;
         product.price = price;
         product.description = description;
-        product.on_store = hidden;
+        product.on_store = hidden === "on" ? true : false;
+        product.category_id = category_id;
 
         if(images && images.length > 0) {
             const imageUrls = images.map(file => `/img/product/${file.filename}`);
@@ -102,10 +104,10 @@ class ProductController {
         const product = await Product.findOne({product_id: productID});
 
         if(product){
-            product.hidden = !product.hidden;
+            product.on_store = !product.on_store;
             await product.save()
 
-            req.session.message = product.hidden ? "Product is in storage" : "Product is on store";
+            req.session.message = product.on_store ? "Product is in storage" : "Product is on store";
         }else{
             req.session.message = "Product is not found";
         }

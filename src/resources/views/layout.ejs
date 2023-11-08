@@ -19,11 +19,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <!-- <link href="/lib/animate/animate.min.css" rel="stylesheet"> -->
-    <!-- <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
 
     <!-- admin -->
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
@@ -32,38 +29,41 @@
         rel="stylesheet">
 
     <!-- Font Awesome-->
-    <link rel="stylesheet" type="text/css" href="/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/css/back-end/font-awesome.css">
 
-    <!-- Flag icon-->
-    <link rel="stylesheet" type="text/css" href="/css/flag-icon.css">
+    <% if(admin) { %>
 
-    <!-- ico-font-->
-    <!-- <link rel="stylesheet" type="text/css" href="/css/icofont.css"> -->
+        <!-- Flag icon-->
+        <link rel="stylesheet" type="text/css" href="/css/back-end/flag-icon.css">
 
-    <!-- Prism css -->
-    <!-- <<link rel="stylesheet" type="text/css" href="/css/prism.css"> -->
+        <!-- Datatables css-->
+        <link rel="stylesheet" type="text/css" href="/css/back-end/datatables.css">
 
-    <!-- table css-->
-    <link rel="stylesheet" type="text/css" href="/css/datatables.css">
+        <!-- Bootstrap css-->
+        <link rel="stylesheet" type="text/css" href="/css/back-end/bootstrap.css">
 
-    <!-- Chartist css -->
-    <!-- <link rel="stylesheet" type="text/css" href="/css/chartist.css"> -->
+        <!-- App css-->
+        <link rel="stylesheet" type="text/css" href="/css/back-end/admin.css">
 
-    <!-- vector map css -->
-    <!-- <link rel="stylesheet" type="text/css" href="/css/vector-map.css"> -->
+        <!-- Chartist css -->
+        <link rel="stylesheet" type="text/css" href="/css/back-end/chartist.css">
 
-    <!-- Bootstrap css-->
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+        <% } else { %>
+            <!-- Libraries Stylesheet -->
+            <link href="/lib/animate/animate.min.css" rel="stylesheet">
+            <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-    <!-- App css-->
-    <link rel="stylesheet" type="text/css" href="/css/admin.css">
+            <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css" rel="stylesheet">
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <!-- <link href="/css/style.css" rel="stylesheet"> -->
+            <!-- Customized Bootstrap Stylesheet -->
+            <link href="/css/style.css" rel="stylesheet">
+            <% } %>
 </head>
 
 <body>
     <% if(admin) { %>
+        <!-- latest jquery-->
+        <script src="/js/jquery-3.3.1.min.js"></script>
         <!-- page-wrapper Start-->
         <div class="page-wrapper">
 
@@ -81,6 +81,32 @@
                 </div>
 
         </div>
+        <!-- Bootstrap js-->
+        <script src="/js/popper.min.js"></script>
+        <script src="/js/bootstrap.js"></script>
+
+        <!-- feather icon js-->
+        <script src="/js/icons/feather-icon/feather.min.js"></script>
+        <script src="/js/icons/feather-icon/feather-icon.js"></script>
+
+        <!-- Sidebar jquery-->
+        <script src="/js/sidebar-menu.js"></script>
+
+        <!--dashboard custom js-->
+        <script src="/js/dashboard/default.js"></script>
+
+        <!--right sidebar js-->
+        <script src="/js/chat-menu.js"></script>
+
+        <!--height equal js-->
+        <script src="/js/equal-height.js"></script>
+
+        <!-- lazyload js-->
+        <script src="/js/lazysizes.min.js"></script>
+
+        <!--script admin-->
+        <script src="/js/admin-script.js"></script>
+
         <% } else { %>
             <%- include('partials/header.ejs') %>
 
@@ -91,54 +117,22 @@
                         <!-- Back to Top -->
                         <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
+                        <!-- JavaScript Libraries -->
+                        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+                        <script
+                            src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+                        <script src="/lib/easing/easing.min.js"></script>
+                        <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+
+                        <script
+                            src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js"></script>
+
+                        <!-- Template Javascript -->
+                        <script src="/js/main.js"></script>
+                        <script src="/js/cart.js"></script>
+                        <script src="/js/checkout.js"></script>
+
                         <% } %>
-
-
-
-                            <!-- Template Javascript -->
-
-                            <!-- JavaScript Libraries -->
-                            <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-                            <script
-                                src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-                            <script src="/lib/easing/easing.min.js"></script>
-                            <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
-
-                            <!-- Contact Javascript File -->
-                            <!-- <script src="/mail/jqBootstrapValidation.min.js"></script>
-                                <script src="/mail/contact.js"></script> -->
-
-                            <!-- latest jquery-->
-                            <script src="/js/main.js"></script>
-                            <script src="/js/jquery-3.3.1.min.js"></script>
-
-                            <!-- Bootstrap js-->
-                            <script src="/js/popper.min.js"></script>
-                            <script src="/js/bootstrap.js"></script>
-
-                            <!-- feather icon js-->
-                            <script src="/js/icons/feather-icon/feather.min.js"></script>
-                            <script src="/js/icons/feather-icon/feather-icon.js"></script>
-
-                            <!-- Sidebar jquery-->
-                            <script src="/js/sidebar-menu.js"></script>
-
-                            <!-- lazyload js-->
-                            <script src="/js/lazysizes.min.js"></script>
-
-                            <!--right sidebar js-->
-                            <script src="/js/chat-menu.js"></script>
-
-                            <!--height equal js-->
-                            <script src="/js/equal-height.js"></script>
-
-                            <!-- lazyload js-->
-                            <script src="/js/lazysizes.min.js"></script>
-
-                            <!--script admin-->
-                            <script src="/js/admin-script.js"></script>
-
-
 </body>
 
 </html>

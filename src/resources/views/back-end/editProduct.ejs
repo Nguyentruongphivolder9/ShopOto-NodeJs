@@ -65,14 +65,14 @@
                                   <img id="image-preview" src="" alt="Image Preview" style="display: none; max-width: 100px;">
                                 </div>
                         </div>
-                        <select name="category_id" id="">
+                        <select name="category_id" id="" required>
                             <option value="">Select Category</option>
                             <% for (let category of categories){ %>
                                 <option value="<%= category.category_id %>"><%= category.cate_name %></option>
                             <% } %>
                       </select>
                         <div class="form-group">
-                            <input type="checkbox" name="hidden" id="hidden" <% if(product && product.hidden) {%> checked <% } %>> Put on store?
+                            <input type="checkbox" name="hidden" id="hidden" <% if(product && product.on_store) {%> checked <% } %>> Put on store?
                           </div>
                         <button type="submit" class="btn btn-info">Edit Product</button>
                        </form>
