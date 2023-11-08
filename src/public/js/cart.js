@@ -1,7 +1,7 @@
 $(document).ready(function (e) {
     var checkboxAll = $('#checkbox-all');
     var courseItemCheckbox = $('input[name="cartIds[]"]');
-    var btnCheckedAll = $('.btn-checked-all');
+    var btnCheckedDelete = $('.btn-checked-delete');
     var btnCheckout = $('#proceedToCheckout');
     var addToCart = $('.addToCart');
     var deleteCart = $('.deleteCart');
