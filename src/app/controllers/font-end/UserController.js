@@ -1,27 +1,31 @@
 const User = require('../../models/User');
 
 class UserController {
+
+
     async loginUser(req, res) {
-        var { email, password } = req.body;
-        var user = await User.findOne({ email: email, password: password });
-        if (user) {
-            //dang ky session
-            req.session.user = user;
-            return res.redirect('/user');
-        } else {
-            res.render('login', { layout: false, error: 'Login Fail!', data: { email, password } });
-        }
-        if (req.session.user) {
-            if (req.session.user.role == "admin") {
-                return res.render('back-end/index', { admin: true });
+        const { email, password } = req.body;
+        try {
+            const user = await User.findOne({ email, password });
+            if (user) {
+                // Register the session
+                req.session.user = user;
+                console.log(req.session.user);
+                // Redirect based on user role
+                if (user.role === 'admin') {
+                    return res.redirect('/admin');
+                } else {
+                    return res.redirect('/');
+                }
             } else {
-                return res.render('font-end/index', { admin: false });
+                res.render('login', { layout: false, error: 'Login Fail!', data: { email, password } });
             }
-        } else {
-            return res.render('login', { layout: false });
+        } catch (error) {
+            // Handle errors (log, render an error page, etc.)
+            console.error(error);
         }
     }
-
+    
 
 
     // Xử lý tạo mới user
@@ -42,22 +46,6 @@ class UserController {
             }
         }
     }
-
-
-    //  getFormCreateUser  (req ,res )  {
-    //     if(req.session.user){
-    //         if(req.session.user.role == "user"){
-    //             return res.render('/');
-    //         }else {
-    //             return res.redirect('/');
-    //         }
-    //     }else {
-    //         res.redirect('/user/login');
-    //     }
-    //     res.render("detail");
-    // }
-
-
 
 
 }

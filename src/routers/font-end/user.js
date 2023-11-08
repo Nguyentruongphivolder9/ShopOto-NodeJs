@@ -1,11 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const UserController = require('../../app/controllers/font-end/UserController');
+const userController = require('../../app/controllers/font-end/UserController');
 
 
-router.get('/', UserController.getAllUsers);
-router.post('/login' , UserController.checkLogin);
-router.post('/create' , UserController.checkRegister);
+router.post('/login' , userController.loginUser);
+router.post('/create' , userController.createRegister);
 
 
 
