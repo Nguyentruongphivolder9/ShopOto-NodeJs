@@ -1,8 +1,8 @@
 'use strict';
-(function() {
+(function () {
     var db = {
-        loadData: function(filter) {
-            return $.grep(this.clients, function(client) {
+        loadData: function (filter) {
+            return $.grep(this.clients, function (client) {
                 return (!filter.Name || client.Name.indexOf(filter.Name) > -1)
                     && (!filter.Action || client.Action === filter.Action)
                     && (!filter.ProductCategory || client.ProductCategory.indexOf(filter.ProductCategory) > -1)
@@ -10,12 +10,12 @@
                     && (filter.Married === undefined || client.Married === filter.Married);
             });
         },
-        insertItem: function(insertingClient) {
+        insertItem: function (insertingClient) {
             this.clients.push(insertingClient);
         },
-        updateItem: function(updatingClient) { },
+        updateItem: function (updatingClient) { },
 
-        deleteItem: function(deletingClient) {
+        deleteItem: function (deletingClient) {
             var clientIndex = $.inArray(deletingClient, this.clients);
             this.clients.splice(clientIndex, 1);
         }
@@ -33,181 +33,181 @@
     ];
     db.clients = [
         {
-            "Image": "../assets/images/dashboard/product/20.jpg",
+            "Image": "../img/dashboard/product/20.jpg",
             "Name": "Steering Wheels",
             "Price": "$46.00",
             "Status": "<i class=\"fa fa-circle font-warning f-12\"></i>",
             "Sub Category": "Electronics",
         },
         {
-            "Image": "../assets/images/dashboard/product/19.jpg",
+            "Image": "../img/dashboard/product/19.jpg",
             "Name": "Motor Vehicle Tyres",
             "Price": "$671.00",
             "Status": "<i class=\"fa fa-circle font-success f-12\"></i>",
             "Sub Category": "Electronics",
         },
         {
-            "Image": "../assets/images/dashboard/product/18.jpg",
+            "Image": "../img/dashboard/product/18.jpg",
             "Name": "Automotive Battery",
             "Price": "$368.00",
             "Status": "<i class=\"fa fa-circle font-warning f-12\"></i>",
             "Sub Category": "Electronics",
         },
         {
-            "Image": "../assets/images/dashboard/product/17.jpg",
+            "Image": "../img/dashboard/product/17.jpg",
             "Name": "Apple 6s",
             "Price": "$782.00",
             "Status": "<i class=\"fa fa-circle font-danger f-12\"></i>",
             "Sub Category": "Electronics",
         },
         {
-            "Image": "../assets/images/dashboard/product/16.jpg",
+            "Image": "../img/dashboard/product/16.jpg",
             "Name": "Printer",
             "Price": "$4825.00",
             "Status": "<i class=\"fa fa-circle font-warning f-12\"></i>",
             "Sub Category": "Electronics",
         },
         {
-            "Image": "../assets/images/dashboard/product/15.jpg",
+            "Image": "../img/dashboard/product/15.jpg",
             "Name": "Bucket Seat",
             "Price": "$25.00",
             "Status": "<i class=\"fa fa-circle font-success f-12\"></i>",
             "Sub Category": "Electronics",
         },
         {
-            "Image": "../assets/images/dashboard/product/14.jpg",
+            "Image": "../img/dashboard/product/14.jpg",
             "Name": "Canon Camera",
             "Price": "$2461.00",
             "Status": "<i class=\"fa fa-circle font-warning f-12\"></i>",
             "Sub Category": "Electronics",
-        },{
-            "Image": "../assets/images/dashboard/product/13.jpg",
+        }, {
+            "Image": "../img/dashboard/product/13.jpg",
             "Name": "High Quality Headphones",
             "Price": "$761.00",
             "Status": "<i class=\"fa fa-circle font-success f-12\"></i>",
             "Sub Category": "Electronics",
         },
         {
-            "Image": "../assets/images/dashboard/product/12.jpg",
+            "Image": "../img/dashboard/product/12.jpg",
             "Name": "Home Theater Speakers",
             "Price": "$672.00",
             "Status": "<i class=\"fa fa-circle font-success f-12\"></i>",
             "Sub Category": "Electronics",
         },
         {
-            "Image": "../assets/images/dashboard/product/11.jpg",
+            "Image": "../img/dashboard/product/11.jpg",
             "Name": "Night lamp",
             "Price": "$84.00",
             "Status": "<i class=\"fa fa-circle font-success\"></i>",
             "Sub Category": "furniture",
         },
         {
-            "Image": "../assets/images/dashboard/product/10.jpg",
+            "Image": "../img/dashboard/product/10.jpg",
             "Name": "men's shoes",
             "Price": "$67.00",
             "Status": "<i class=\"fa fa-circle font-danger f-12\"></i>",
             "Sub Category": "shoes",
         },
         {
-            "Image": "../assets/images/dashboard/product/9.jpg",
+            "Image": "../img/dashboard/product/9.jpg",
             "Name": "Ledi's red top",
             "Price": "$234.00",
             "Status": "<i class=\"fa fa-circle font-warning f-12\"></i>",
             "Sub Category": "clothes",
         },
         {
-            "Image": "../assets/images/dashboard/product/8.jpg",
+            "Image": "../img/dashboard/product/8.jpg",
             "Name": "Diamond Ring",
             "Price": "$237.00",
             "Status": "<i class=\"fa fa-circle font-success f-12\"></i>",
             "Sub Category": "Jewellery",
         },
         {
-            "Image": "../assets/images/dashboard/product/7.jpg",
+            "Image": "../img/dashboard/product/7.jpg",
             "Name": "Diamond Nacklace",
             "Price": "$3579.00",
             "Status": "<i class=\"fa fa-circle font-warning f-12\"></i>",
             "Sub Category": "Jewellery",
         },
         {
-            "Image": "../assets/images/dashboard/product/6.jpg",
+            "Image": "../img/dashboard/product/6.jpg",
             "Name": "Diamond Earrings",
             "Price": "$3145.00",
             "Status": "<i class=\"fa fa-circle font-success f-12\"></i>",
             "Sub Category": "Jewellery",
         },
         {
-            "Image": "../assets/images/dashboard/product/5.jpg",
+            "Image": "../img/dashboard/product/5.jpg",
             "Name": "latest ledis shoes",
             "Price": "$357.00",
             "Status": "<i class=\"fa fa-circle font-success f-12\"></i>",
             "Sub Category": "shoes",
         },
         {
-            "Image": "../assets/images/dashboard/product/4.jpg",
+            "Image": "../img/dashboard/product/4.jpg",
             "Name": "Woman one pis",
             "Price": "$682.00",
             "Status": "<i class=\"fa fa-circle font-danger f-12\"></i>",
             "Sub Category": "clothes",
         },
         {
-            "Image": "../assets/images/dashboard/product/3.jpg",
+            "Image": "../img/dashboard/product/3.jpg",
             "Name": "Mouse",
             "Price": "$24.00",
             "Status": "<i class=\"fa fa-circle font-success f-12\"></i>",
             "Sub Category": "electronics",
         },
         {
-            "Image": "../assets/images/dashboard/product/2.jpg",
+            "Image": "../img/dashboard/product/2.jpg",
             "Name": "Coffee maker",
             "Price": "$9721.00",
             "Status": "<i class=\"fa fa-circle font-success f-12\"></i>",
             "Sub Category": "electronics",
         },
         {
-            "Image": "../assets/images/dashboard/product/1.jpg",
+            "Image": "../img/dashboard/product/1.jpg",
             "Name": "Diamond Nacklace",
             "Price": "$3579.00",
             "Status": "<i class=\"fa fa-circle font-danger f-12\"></i>",
             "Sub Category": "Jewellery",
         },
         {
-            "Image": "../assets/images/dashboard/product/2.jpg",
+            "Image": "../img/dashboard/product/2.jpg",
             "Name": "Honor Mobile",
             "Price": "$462.00",
             "Status": "<i class=\"fa fa-circle font-warning f-12\"></i>",
             "Sub Category": "Electronics",
         },
         {
-            "Image": "../assets/images/dashboard/product/3.jpg",
+            "Image": "../img/dashboard/product/3.jpg",
             "Name": "Apple 6s",
             "Price": "$782.00",
             "Status": "<i class=\"fa fa-circle font-success f-12\"></i>",
             "Sub Category": "Electronics",
         },
         {
-            "Image": "../assets/images/dashboard/product/4.jpg",
+            "Image": "../img/dashboard/product/4.jpg",
             "Name": "Printer",
             "Price": "$4825.00",
             "Status": "<i class=\"fa fa-circle font-danger f-12\"></i>",
             "Sub Category": "Electronics",
         },
         {
-            "Image": "../assets/images/dashboard/product/5.jpg",
+            "Image": "../img/dashboard/product/5.jpg",
             "Name": "High Quality Headphones",
             "Price": "$761.00",
             "Status": "<i class=\"fa fa-circle font-warning f-12\"></i>",
             "Sub Category": "Electronics",
         },
         {
-            "Image": "../assets/images/dashboard/product/6.jpg",
+            "Image": "../img/dashboard/product/6.jpg",
             "Name": "Motorola Bluetooth",
             "Price": "$25.00",
             "Status": "<i class=\"fa fa-circle font-success f-12\"></i>",
             "Sub Category": "Electronics",
         },
         {
-            "Image": "../assets/images/dashboard/product/7.jpg",
+            "Image": "../img/dashboard/product/7.jpg",
             "Name": "latest ledis shoes",
             "Price": "$357.00",
             "Status": "<i class=\"fa fa-circle font-danger f-12\"></i>",

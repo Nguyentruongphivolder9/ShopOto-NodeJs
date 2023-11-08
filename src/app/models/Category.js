@@ -3,37 +3,37 @@ const shortid = require('shortid');
 
 const categorySchema = new Schema({
     category_id: {
-        type:String,
+        type: String,
         default: shortid.generate,
-        unique:true,
+        unique: true,
     },
-    brandId:{
-        type:String,
-        ref:'Brand',
+    brandId: {
+        type: String,
+        ref: 'Brand',
     },
     cate_name: {
         type: String,
         require: [true, "Category name can't be empty."],
         trim: true,
     },
-    cate_img:{
-        type:String,
-        validator:function(v){
+    cate_img: {
+        type: String,
+        validator: function (v) {
             return /\.(jpg|jpeg|png)$/i.test(v);
         },
-        message:"Invalid image field format",
-        required: [true,"Ảnh sản phẩm không được để trống"]
+        message: "Invalid image field format",
+        required: [true, "Ảnh sản phẩm không được để trống"]
     },
-    cate_description:{
-        type:String,
-        required:[true,"Mô tả sản phẩm không được để trống"]
+    cate_description: {
+        type: String,
+        required: [true, "Mô tả sản phẩm không được để trống"]
     },
-    hidden:{
-        type:Boolean,
+    hidden: {
+        type: Boolean,
         default: false,
     },
 }, {
     timestamps: true,
 });
 
-module.exports = mongoose.model("Category", categorySchema);
+module.exports = mongoose.model('Category', categorySchema);
