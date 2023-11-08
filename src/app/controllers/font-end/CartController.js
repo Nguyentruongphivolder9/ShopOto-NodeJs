@@ -1,9 +1,10 @@
 class CartController {
-    getCartUser(req, res) {
+    async getCartUser(req, res) {
         try {
             res.render('font-end/shopping-cart', { admin: false });
         } catch (error) {
-            res.render('login', { layout: false })
+            console.log("Error: " + error);
+            res.send('error');
         }
     }
 
@@ -12,7 +13,33 @@ class CartController {
         try {
             res.send("success");
         } catch (error) {
-            res.render('login', { layout: false })
+            console.log("Error: " + error);
+            res.send('error');
+        }
+    }
+
+    async deleteCartItem(req, res) {
+        const { id } = req.params;
+        try {
+            res.send("error");
+        } catch (error) {
+            console.log("Error: " + error);
+            res.send('error');
+        }
+    }
+
+    async handleFormAction(req, res) {
+        switch (req.body.actions) {
+            case 'delete':
+                console.log(req.body.cartIds);
+                res.send("success")
+                break;
+            case 'checkout':
+                console.log(req.body.cartIds);
+                res.send("oke")
+                break;
+            default:
+                res.json({ message: 'Action is invalid!' })
         }
     }
 }

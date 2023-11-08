@@ -145,11 +145,9 @@
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                 <div class="product-item bg-light mb-4">
                     <div class="product-img position-relative overflow-hidden">
-                        <a href="/product/detail/<%= item._id %>">
-                            <img class="img-fluid w-100" src="<%= item.image %>" alt="">
-                        </a>
+                        <img class="img-fluid w-100" src="<%= item.image %>" alt="">
                         <div class="product-action">
-                            <button id="addToCart" data-id="<%= item._id %>" class="btn btn-outline-dark btn-square"><i
+                            <button data-id="<%= item._id %>" class="btn btn-outline-dark btn-square addToCart"><i
                                     class="fa fa-shopping-cart"></i></button>
                             <button class="btn btn-outline-dark btn-square ml-3"><i class="far fa-heart"></i></button>
                         </div>
