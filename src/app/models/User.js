@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const UserSchema = new Schema({
-    user_id: { type: String, required: [true, 'user_id cannot be null.'] },
+    // user_id: { type: String, required: [true, 'user_id cannot be null.'] },
     username: {
         type: String,
         required: [true, 'Username is required'],
@@ -24,6 +24,7 @@ const UserSchema = new Schema({
     email: {
         type: String,
         required: [true, 'Email is required'],
+        unique: true,
         trim: true,
         validate: {
             validator: (v) => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(v),
@@ -56,7 +57,7 @@ const UserSchema = new Schema({
             },
             message: 'Only .jpg, .jpeg, .png files are allowed.',
         },
-        required: [true, 'Image is required'],
+        // required: [true, 'Image is required'],
     },
 }, {
     timestamps: true,

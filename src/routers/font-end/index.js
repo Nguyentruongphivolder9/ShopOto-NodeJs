@@ -5,8 +5,8 @@ const userRouter = require('./user');
 function routersFE(app) {
 
     app.use('/product', productRouter);
-    app.use('/', siteRouter);
     app.use('/user', userRouter);
+    app.use('/', siteRouter);
 }
 
 module.exports = routersFE;
