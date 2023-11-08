@@ -6,6 +6,7 @@ class SiteController {
         try {
             const products = await Product.find({});
             const categories = await Category.find({});
+            console.log(products);
 
             res.render('font-end/home', {
                 products,

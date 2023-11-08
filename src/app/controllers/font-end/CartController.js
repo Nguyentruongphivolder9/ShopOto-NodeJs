@@ -1,3 +1,5 @@
+const Cart = require('../../models/Cart');
+
 class CartController {
     async getCartUser(req, res) {
         try {
@@ -11,6 +13,7 @@ class CartController {
     async addToCart(req, res) {
         const { id } = req.params;
         try {
+            console.log(id);
             res.send("success");
         } catch (error) {
             console.log("Error: " + error);
