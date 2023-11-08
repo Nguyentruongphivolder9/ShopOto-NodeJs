@@ -1,68 +1,32 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
-var current_fs, next_fs, previous_fs; 
-var opacity;
+    $("#button-order").click(function () {
 
-$(".next").click(function(){
+        const firstName = $('input[name="firstName"]').val().trim();
+        const lastName = $('input[name="lastName"]').val().trim();
+        const phoneNumber = $('input[name="phoneNumber"]').val().trim();
+        const address = $('input[name="address"]').val().trim();
+        const ward = $('input[name="ward"]').val().trim();
+        const district = $('input[name="district"]').val().trim();
+        const city = $('input[name="city"]').val().trim();
 
-current_fs = $(this).parent();
-next_fs = $(this).parent().next();
+        const fullName = `${firstName} ${lastName}`;
+        const addressCheckout = `${address} - ${ward} - ${district} - ${city}`;
 
-//Add Class Active
-$(".menu-bar li").eq($(".checkout-fr-box").index(next_fs)).addClass("active");
+        // const dataToSend = { cartIds, actions: "checkout" };
+        $.ajax({
+            type: 'POST',
+            url: '/order',
+            contentType: 'application/json',
+            // data: JSON.stringify(dataToSend),
+            success: function (status) {
+                console.log(status);
+            },
+            error: function (error) {
+                console.error('Error:', error);
+            }
+        });
 
-//show the next fieldset
-next_fs.show();
-//hide the current fieldset with style
-current_fs.animate({opacity: 0}, {
-step: function(now) {
-// for making fielset appear animation
-opacity = 1 - now;
-
-current_fs.css({
-'display': 'none',
-'position': 'relative'
-});
-next_fs.css({'opacity': opacity});
-},
-duration: 600
-});
-});
-
-$(".previous").click(function(){
-
-current_fs = $(this).parent();
-previous_fs = $(this).parent().prev();
-
-//Remove class active
-$(".menu-bar li").eq($(".checkout-fr-box").index(current_fs)).removeClass("active");
-
-//show the previous fieldset
-previous_fs.show();
-
-//hide the current fieldset with style
-current_fs.animate({opacity: 0}, {
-step: function(now) {
-// for making fielset appear animation
-opacity = 1 - now;
-
-current_fs.css({
-'display': 'none',
-'position': 'relative'
-});
-previous_fs.css({'opacity': opacity});
-},
-duration: 600
-});
-});
-
-$('.radio-group .radio').click(function(){
-$(this).parent().find('.radio').removeClass('selected');
-$(this).addClass('selected');
-});
-
-$(".submit").click(function(){
-return false;
-})
+    })
 
 });
