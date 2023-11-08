@@ -47,7 +47,7 @@ class brandController {
 
         brand.brand_name = brand_name;
         
-        if(brand_img && brand_img.length > 0){
+        if(brand_img && brand_img.filename){
             const imageUrl = `/img/brand/${brand_img.filename}`;
             brand.brand_img = imageUrl;
         }
