@@ -58,15 +58,15 @@ $(document).ready(function (e) {
     function renderCheckAllSubmitBtn() {
         var checkedCount = $('input[name="cartIds[]"]:checked').length;
         if (checkedCount > 0) {
-            btnCheckedAll.attr('disabled', false);
+            btnCheckedDelete.attr('disabled', false);
             btnCheckout.attr('disabled', false);
         } else {
-            btnCheckedAll.attr('disabled', true);
+            btnCheckedDelete.attr('disabled', true);
             btnCheckout.attr('disabled', true);
         }
     }
 
-    btnCheckedAll.on('click', function () {
+    btnCheckedDelete.on('click', function () {
         if (!$(this).prop('disabled')) {
             const inputElements = $('input[name="cartIds[]"]:checked');
             const cartIds = [];
