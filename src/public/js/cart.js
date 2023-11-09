@@ -40,10 +40,13 @@ $(document).ready(function (e) {
                 break;
             case "success-deleted":
                 Swal.fire({
-                    icon: 'error',
-                    title: 'Deleted Successfully',
-                    timer: 2000,
-                    showConfirmButton: false
+                    title: "Successfully deleted the product",
+                    icon: "success",
+                    confirmButtonText: "OK",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "/cart"; // Thay đổi liên kết này bằng liên kết bạn muốn chuyển hướng đến.
+                    }
                 });
                 break;
             default:
@@ -92,7 +95,6 @@ $(document).ready(function (e) {
                 data: JSON.stringify(dataToSend),
                 success: function (status) {
                     messages(status);
-                    // window.location.href = "/cart";
                 },
                 error: function (error) {
                     console.error('Error:', error);
@@ -117,9 +119,7 @@ $(document).ready(function (e) {
                 contentType: 'application/json',
                 data: JSON.stringify(dataToSend),
                 success: function (status) {
-                    console.log(status);
-                    if (status === "oke") {
-
+                    if (status === "checkout") {
                         window.location.href = "/checkout";
                     }
                 },

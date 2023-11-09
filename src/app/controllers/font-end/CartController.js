@@ -89,29 +89,20 @@ class CartController {
 
     async handleFormAction(req, res) {
         const { cartIds, actions } = req.body;
-        if (!Array.isArray(cartIds)) {
-            return res.status(400).json({ message: 'cartIds should be an array' });
-        }
 
         try {
             switch (actions) {
                 case 'delete':
-                    console.log(cartIds);
-                    const result = await Cart.updateOne(
+                    await Cart.updateOne(
                         { user_id: '123' },
                         {
                             $pull: { products: { product_id: { $in: cartIds } } }
                         }
                     );
-                    console.log(result);
-                    if (result.modifiedCount > 0) {
-                        res.send("success-deleted");
-                    } else {
-                        res.status(400).json({ message: 'No matching products found for deletion' });
-                    }
+                    res.send("success-deleted");
                     break;
                 case 'checkout':
-                    console.log(cartIds);
+                    req.session.cartItems = cartIds;
                     res.send("checkout");
                     break;
                 default:
