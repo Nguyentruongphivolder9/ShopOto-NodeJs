@@ -25,7 +25,10 @@ class SiteController {
     }
 
     login(req, res, next) {
-        res.render('login', { layout: false });
+        res.render('login', { layout: false ,  data :null , error : null } );
+    }
+    register(req, res, next) {
+        res.render('register', { layout: false ,  data :null , errors : null } );
     }
 
     admin(req, res, next) {
