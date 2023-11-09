@@ -10,42 +10,35 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item position-relative active" style="height: 430px;">
-                        <img class="position-absolute w-100 h-100" src="/img/carousel-1.jpg" style="object-fit: cover;">
+                        <img class="position-absolute w-100 h-100" src="/img/Car-carousel.webp" style="object-fit: cover;">
                         <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <div class="p-3" style="max-width: 700px;">
-                                <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Men
-                                    Fashion</h1>
-                                <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna
-                                    amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum
-                                    diam</p>
+                                <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Roadster
+                                    Cars</h1>
+                                <p class="mx-md-5 px-5 animate__animated animate__bounceIn">An open two-seat car with emphasis on sporting appearance or character.Initially an American term for a two-seat car with no weather protection, usage has spread internationally and has evolved to include two-seat convertibles.</p>
                                 <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
                                     href="#">Shop Now</a>
                             </div>
                         </div>
                     </div>
                     <div class="carousel-item position-relative" style="height: 430px;">
-                        <img class="position-absolute w-100 h-100" src="/img/carousel-2.jpg" style="object-fit: cover;">
+                        <img class="position-absolute w-100 h-100" src="/img/Car-carousel2.jpg" style="object-fit: cover;">
                         <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <div class="p-3" style="max-width: 700px;">
                                 <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">
-                                    Women Fashion</h1>
-                                <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna
-                                    amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum
-                                    diam</p>
+                                    Sport Cars</h1>
+                                <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Designed with an emphasis on dynamic performance, such as handling, acceleration, top speed, the thrill of driving, and racing capability.</p>
                                 <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
                                     href="#">Shop Now</a>
                             </div>
                         </div>
                     </div>
                     <div class="carousel-item position-relative" style="height: 430px;">
-                        <img class="position-absolute w-100 h-100" src="/img/carousel-3.jpg" style="object-fit: cover;">
+                        <img class="position-absolute w-100 h-100" src="/img/Car-carousel3.jpg" style="object-fit: cover;">
                         <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <div class="p-3" style="max-width: 700px;">
-                                <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Kids
-                                    Fashion</h1>
-                                <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna
-                                    amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum
-                                    diam</p>
+                                <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">SUV Cars</h1>
+                                <p class="mx-md-5 px-5 animate__animated animate__bounceIn">A car classification that combines elements of road-going passenger cars with features from off-road vehicles, such as raised ground clearance and four-wheel drive</p>
                                 <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
                                     href="#">Shop Now</a>
                             </div>
@@ -56,7 +49,7 @@
         </div>
         <div class="col-lg-4">
             <div class="product-offer mb-30" style="height: 200px;">
-                <img class="img-fluid" src="/img/offer-1.jpg" alt="">
+                <img class="img-fluid" src="/img/Offer.jpg" alt="">
                 <div class="offer-text">
                     <h6 class="text-white text-uppercase">Save 20%</h6>
                     <h3 class="text-white mb-3">Special Offer</h3>
@@ -64,9 +57,9 @@
                 </div>
             </div>
             <div class="product-offer mb-30" style="height: 200px;">
-                <img class="img-fluid" src="/img/offer-2.jpg" alt="">
+                <img class="img-fluid" src="/img/Offer-2.jpg" alt="">
                 <div class="offer-text">
-                    <h6 class="text-white text-uppercase">Save 20%</h6>
+                    <h6 class="text-white text-uppercase">Save 30%</h6>
                     <h3 class="text-white mb-3">Special Offer</h3>
                     <a href="" class="btn btn-primary">Shop Now</a>
                 </div>
@@ -115,21 +108,23 @@
             class="bg-secondary pr-3">Categories</span></h2>
     <div class="row px-xl-5 pb-3">
         <% categories.forEach(item=> { %>
+            <% if (item.on_store) { %>
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                 <a class="text-decoration-none" href="">
                     <div class="cat-item d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="<%= item.image_cate %>" alt="">
+                        <div class="overflow-hidden" style="width: 100px; height: 100px; display:flex; align-items:center;">
+                            <img class="img-fluid" src="<%= item.cate_img %>" alt="">
                         </div>
                         <div class="flex-fill pl-3">
                             <h6>
-                                <%= item.category_name %>
+                                <%= item.cate_name %>
                             </h6>
-                            <small class="text-body">100 Products</small>
+                            <small class="text-body"><%= item.cate_description %></small>
                         </div>
                     </div>
                 </a>
             </div>
+            <% } %>
             <% }) %>
     </div>
 </div>
@@ -142,6 +137,7 @@
             Products</span></h2>
     <div class="row px-xl-5">
         <% products.forEach(item=> { %>
+            <% if (item.on_store) { %>
             <div class="col-lg-4 col-md-4 col-sm-6 pb-1">
                 <div class="product-item bg-light mb-4">
                     <div class="product-img position-relative overflow-hidden">
@@ -173,6 +169,7 @@
                     </div>
                 </div>
             </div>
+            <% } %>
             <% }) %>
     </div>
 </div>
@@ -184,7 +181,7 @@
     <div class="row px-xl-5">
         <div class="col-md-6">
             <div class="product-offer mb-30" style="height: 300px;">
-                <img class="img-fluid" src="/img/offer-1.jpg" alt="">
+                <img class="img-fluid" src="/img/Offer.jpg" alt="">
                 <div class="offer-text">
                     <h6 class="text-white text-uppercase">Save 20%</h6>
                     <h3 class="text-white mb-3">Special Offer</h3>

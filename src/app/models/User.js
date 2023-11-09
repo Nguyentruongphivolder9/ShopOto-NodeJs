@@ -1,34 +1,35 @@
 const { Schema, model } = require('mongoose');
 
-const UserSchema = new Schema({
-    // user_id: { type: String, required: [true, 'user_id cannot be null.'] },
+const userSchema = new Schema({
     username: {
         type: String,
         required: [true, 'Username is required'],
-        minLength: [3, 'Username should be at least 3 characters long'],
-        maxLength: [20, 'Username should not exceed 20 characters'],
+        minLength: [3, 'Must be at least 3 characters'],
+        maxLength: [20, 'Must be at most 20 characters'],
         trim: true,
     },
     password: {
         type: String,
         required: [true, 'Password is required'],
-        minLength: [3, 'Password should be at least 3 characters long'],
-        maxLength: [20, 'Password should not exceed 20 characters'],
+        minLength: [3, 'Must be at least 3 characters'],
+        maxLength: [20, 'Must be at most 20 characters'],
         trim: true,
     },
     gender: {
         type: String,
-        enum: ['male', 'female', 'other'],
+        enum: {
+            values: ['male', 'female', 'other'],
+            message: '{VALUE} is not supported',
+        },
         default: 'male',
     },
     email: {
         type: String,
         required: [true, 'Email is required'],
-        unique: true,
         trim: true,
         validate: {
             validator: (v) => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(v),
-            message: 'Invalid email address!',
+            message: 'Invalid email address',
         },
     },
     phone: {
@@ -37,7 +38,7 @@ const UserSchema = new Schema({
         trim: true,
         validate: {
             validator: (v) => /^\d{10}$/.test(v) || v === null,
-            message: 'Invalid phone number!',
+            message: 'Invalid phone number',
         },
     },
     address: {
@@ -52,17 +53,14 @@ const UserSchema = new Schema({
     avatar: {
         type: String,
         validate: {
-            validator: function (v) {
-                return /\.(jpg|jpeg|png)$/i.test(v);
-            },
-            message: 'Only .jpg, .jpeg, .png files are allowed.',
+            validator: (v) => /\.(jpg|jpeg|png)$/i.test(v),
+            message: 'Only .jpg, .jpeg, .png files are allowed',
         },
-        // required: [true, 'Image is required'],
     },
 }, {
     timestamps: true,
 });
 
-const User = model('User', UserSchema);
+const User = model('User', userSchema);
 
 module.exports = User;

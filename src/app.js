@@ -31,6 +31,16 @@ app.use((req, res, next) => {
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
 
+app.use((req, res, next) => {
+    res.locals.user = req.session.user;
+    res.locals.message = req.session.message;
+    res.locals.cartItems = req.session.cartItems;
+    res.locals.checkoutOrder = req.session.checkoutOrder;
+    delete req.session.message;
+    delete req.session.errorMessage;
+    next();
+})
+
 routers(app);
 
 app.listen(PORT, () => {

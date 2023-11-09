@@ -171,6 +171,7 @@
                 </div>
 
                 <% products.forEach(item=> { %>
+                    <% if(item.on_store) { %>
                     <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
                         <div class="product-item bg-light mb-4">
                             <div class="product-img position-relative overflow-hidden">
@@ -205,6 +206,7 @@
                             </div>
                         </div>
                     </div>
+                    <% } %>
                     <% }) %>
 
                         <div class="col-12">

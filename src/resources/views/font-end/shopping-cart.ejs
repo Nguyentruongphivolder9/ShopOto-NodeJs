@@ -34,7 +34,7 @@
                     <% products.forEach(item=> { %>
                         <tr>
                             <td class="align-middle">
-                                <input type="checkbox" name="cartIds[]" value="122">
+                                <input type="checkbox" name="cartIds[]" value="<%= item.product_id %>">
                             </td>
                             <td class="align-middle"><img src="<%= item.image[0] %>" alt="" style="width: 50px;">
                                 <%= item.product_name %>
