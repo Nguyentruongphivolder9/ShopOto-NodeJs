@@ -11,9 +11,9 @@ class CateController{
             res.status(500).send('Error:Something went wrong while retrieving category');
         }
     }
-    async getCateCreate(req,res){
+    async getCateCreate(req, res) {
         const Brands = await Brand.find({});
-        res.render('back-end/createCategory',{admin:true,data:null,err:null,Brands});
+        res.render('back-end/createCategory', { admin: true, data: null, err: null, Brands });
     }
     async createCrate(req,res){
         let {category_name,description,brand_id} = req.body;

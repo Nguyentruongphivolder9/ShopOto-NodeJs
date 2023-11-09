@@ -38,6 +38,14 @@ $(document).ready(function (e) {
                     showConfirmButton: false
                 });
                 break;
+            case "success-deleted":
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Deleted Successfully',
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+                break;
             default:
                 break;
         }
@@ -84,6 +92,7 @@ $(document).ready(function (e) {
                 data: JSON.stringify(dataToSend),
                 success: function (status) {
                     messages(status);
+                    // window.location.href = "/cart";
                 },
                 error: function (error) {
                     console.error('Error:', error);
