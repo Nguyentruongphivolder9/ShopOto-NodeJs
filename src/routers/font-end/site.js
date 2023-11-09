@@ -7,4 +7,6 @@ router.get('/register', siteController.register);
 router.get('/checkout', siteController.checkout);
 router.get('/', siteController.home);
 
+
+
 module.exports = router;

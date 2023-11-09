@@ -2,7 +2,20 @@ const User = require('../../models/User');
 
 class UserController {
 
-
+    async getUsersforForm(req, res) {
+        if (req.session.user) {
+            if (req.session.user.role === 'admin') {
+                console.log(req.session.user);
+                return res.render('back-end/index', { user: req.session.user });
+            } else if (req.session.user.role === 'user') {
+                console.log(req.session.user);
+                return res.redirect('/', { user: req.session.user });
+            }
+        } else {
+            res.render('login', { layout: false });
+        }
+    }
+    
     async loginUser(req, res) {
         const { email, password } = req.body;
         try {
@@ -10,13 +23,16 @@ class UserController {
             if (user) {
                 // Register the session
                 req.session.user = user;
-                console.log(req.session.user);
-                // Redirect based on user role
-                if (user.role === 'admin') {
-                    return res.redirect('/admin');
-                } else {
-                    return res.redirect('/');
-                }
+                req.session.save(() => {
+                    console.log(req.session.user);
+                    // Redirect based on user role
+                    if (user.role === 'admin') {
+                        return res.redirect('/admin');
+                    } else {
+                        return res.redirect('/');
+                    }
+                });
+                
             } else {
                 res.render('login', { layout: false, error: 'Login Fail!', data: { email, password } });
             }
@@ -47,6 +63,29 @@ class UserController {
         }
     }
 
+    async getDetailUser(req, res) {
+        // Dua vao session in thong tin ra
+        if (req.session.user) {
+            if (req.session.user.role === 'admin') {
+                // If the user is an admin, render the admin template
+                return res.render('back-end/index');
+            } else {
+                const users = []; // You need to define 'users' based on your logic
+                // If the user is not an admin, render the detailUser template
+                console.log(users);
+                return res.render('font-end/detailUser',  { users });
+            }
+        } else {
+            // If there is no user session, redirect to the login page
+            return res.redirect('/login');
+        }
+    }
+    
+
+    logout (req, res )  {
+        req.session.destroy();
+        res.redirect("/login");
+    }
 
 }
 
