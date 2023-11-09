@@ -1,10 +1,12 @@
 const Product = require('../../models/Product');
+const Category = require('../../models/Category');
 
 class ProductController {
     async getAllProducts(req, res, next) {
         try {
             const products = await Product.find({}).exec();
-            res.render('font-end/shop', { products, admin: false });
+            const categories = await Category.find({});
+            res.render('font-end/shop', { products,categories, admin: false });
         } catch (error) {
             next(error);
         }
