@@ -1,76 +1,53 @@
 const { Schema, default: mongoose } = require('mongoose');
 const slug = require('mongoose-slug-updater');
 const shortid = require('shortid');
-const productSchema = new Schema(
-    {
-        product_id: {
-            type: String,
-            default: shortid.generate,
-            unique: true,
-        },
-        product_name: {
-            type: String,
-            required: [true, 'Product name is not empty!'],
-            trim: true,
-            validate: {
-                validator: function (v) {
-                    if (v.length < 4 || v.length > 49) {
-                        return false;
-                    }
-                    if (/[^a-zA-Z0-9\s]/.test(v)) {
-                        return false;
-                    }
-                    return true;
-                },
-                message: () => 'Lỗi định dạng',
-            },
-        },
-        category_id: {
-            type: String,
-            ref: 'Category',
-        },
 
-        brand_id: {
-            type: String,
-            ref: 'Brand',
-        },
-
-        price: {
-            type: Number,
-            required: [true, 'Giá sản phẩm không được để trống'],
-            min: [1, 'Giá sản phẩm phải lớn hơn 1$ và nhỏ hơn 100000$'],
-            max: [100000, 'Giá sản phẩm phải lớn hơn 1$ và nhỏ hơn 100000$'],
-        },
-        image: [
-            {
-                type: String,
-                validate: {
-                    validator: function (v) {
-                        return /\.(jpg|jpeg|png)$/i.test(v);
-                    },
-                    message: (props) => `${props.value} allow type: jpg, jpeg, png`,
-                },
-                required: [true, 'Image is required'],
-            },
-        ],
-        description: {
-            type: String,
-            validate: {
-                validator: (v) => /\^sex|heroin$/gim.test(v),
-                message: (props) => `${props.path} contains sensitive words!`,
-            },
-        },
-        // slug: {
-        //     type: String,
-        //     slug: 'product_name',
-        //     unique: true,
-        // },
+const productSchema = new Schema({
+    product_id: {
+        type:String,
+        default: shortid.generate,
+        unique:true,
     },
-    {
-        timestamps: true,
+    category_id: {
+        type: String,
+        ref: 'Category',
     },
-);
+    product_name:{
+        type:String,
+        required: [true,"Tên sản phẩm là bắt buộc"]
+    },
+    price: {
+        type: Number,
+        required: [true, "Giá sản phẩm không được để trống"],
+        min: [1000, 'Giả sản phẩm phải lớn hơn 1 ngàn đô'],
+        max: [1000000, 'Giá sản phẩm phải nhỏ hơn 1 triệu đô']
+    },
+    image:[{
+        type:String,
+        validator:function(v){
+            return /\.(jpg|jpeg|png)$/i.test(v);
+        },
+        message:"Invalid image field format",
+        required: [true,"Ảnh sản phẩm không được để trống"]
+    }],
+    description:{
+        type:String,
+        required:[true,"Mô tả sản phẩm không được để trống"]
+    },
+    on_store:{
+        type:Boolean,
+        default: false,
+    },
+    slug: {
+        type: String,
+        slug: 'name',
+        unique: true
+    },
+}, 
+{
+    timestamps: true,
+});
 
-mongoose.plugin(slug);
+productSchema.plugin(slug);
 
 module.exports = mongoose.model('Product', productSchema);

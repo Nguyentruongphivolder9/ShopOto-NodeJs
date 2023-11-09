@@ -14,9 +14,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(expressLayouts);
 app.use(session({
-    secret:"Group3-HK3",
-    resave:false,
-    saveUninitialized:true,
+    secret: "Group3-HK3",
+    resave: false,
+    saveUninitialized: true,
 }))
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "resources", "views"));

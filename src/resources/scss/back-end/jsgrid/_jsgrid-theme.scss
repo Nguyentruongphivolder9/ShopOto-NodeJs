@@ -124,12 +124,6 @@ $url_0: url(../../img/js-grid.png);
 		height: 24px;
 	}
 }
-@media only screen and(-webkit-min-device-pixel-ratio:2),only screen and(min-device-pixel-ratio:2) {
-	.jsgrid .jsgrid-button {
-		background-image: $url_0;
-		background-size: 24px 352px;
-	}
-}
 .jsgrid-mode-on-button {
 	opacity: .5;
 }

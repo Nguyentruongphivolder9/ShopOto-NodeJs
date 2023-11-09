@@ -1,15 +1,25 @@
-const multer = require('multer');
-const storage = multer.diskStorage({
-    destination: (req, res, cb) => {
-        cb(null, './src/public/img');
-    },
-    filename: (req, file, cb) => {
-        cb(null, `${Date.now()}-${file.originalname}`);
-    },
-});
+const multer = require("multer");
+const fs = require("fs");
 
-const upload = multer({
-    storage
-});
+const createStorage = (destination) =>{
+    if(!fs.existsSync(destination)){
+        fs.mkdirSync(destination,{recursive:true});
+    }
+    return multer.diskStorage({
+        destination: (req,file,cb) =>{
+            cb(null,destination);
+        },
+        filename: (req,file,cb) =>{
+            cb(null,`${Date.now()}-${file.originalname}`);
+        },
+    });
+};
 
-module.exports = upload;
+const uploadFile = (destination) =>{
+    const storage = createStorage(destination);
+    const upload = multer({storage});
+
+    return upload;
+}
+
+module.exports = uploadFile;
