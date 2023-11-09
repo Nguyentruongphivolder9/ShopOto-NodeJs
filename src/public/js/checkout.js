@@ -12,15 +12,33 @@ $(document).ready(function () {
 
         const fullName = `${firstName} ${lastName}`;
         const addressCheckout = `${address} - ${ward} - ${district} - ${city}`;
+        const totalPrice = $(this).data('total');
 
-        // const dataToSend = { cartIds, actions: "checkout" };
+        const dataToSend = {
+            status: 'pending',
+            total_price: totalPrice,
+            fullName: fullName,
+            ship_address: addressCheckout,
+            ship_phone: phoneNumber
+        };
+
         $.ajax({
-            type: 'POST',
             url: '/order',
+            type: 'POST',
             contentType: 'application/json',
-            // data: JSON.stringify(dataToSend),
+            data: JSON.stringify(dataToSend),
             success: function (status) {
-                console.log(status);
+                if (status === 'success') {
+                    Swal.fire({
+                        title: "Buy the product successfully. Please wait for confirmation!",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "/"; // Thay đổi liên kết này bằng liên kết bạn muốn chuyển hướng đến.
+                        }
+                    });
+                }
             },
             error: function (error) {
                 console.error('Error:', error);
