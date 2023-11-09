@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h1>User Information</h1>
-    <div> Name : <%= users.name %></div>
-    <div> Age : <%= users.age %></div>
-    <div> Email : <%= users.email %></div>
-    <div> Name : <%= users.name %></div>
+    <div> Name : <%= users.username %>
+    </div>
+    <div> Age : <%= users.age ? users.age : '1000000' %>
+    </div>
+    <div> Email : <%= users.email %>
+    </div>
+    <div> Phone : <%= users ? users.phone : '0000000000000' %>
+    </div>
 
 </body>
+
 </html>

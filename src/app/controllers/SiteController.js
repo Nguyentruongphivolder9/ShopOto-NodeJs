@@ -1,19 +1,18 @@
 const Product = require('../models/Product');
 const Category = require('../models/Category');
 const { forEach } = require('lodash');
-
+const User = require('../models/User');
 class SiteController {
     async home(req, res, next) {
         try {
             const products = await Product.find({});
             const categories = await Category.find({});
-
             console.log(products[0].image[0]);
 
             res.render('font-end/home', {
                 products,
                 categories,
-                admin: false
+                admin: false,
             });
         } catch (error) {
             next(error);
@@ -25,10 +24,10 @@ class SiteController {
     }
 
     login(req, res, next) {
-        res.render('login', { layout: false ,  data :null , error : null } );
+        res.render('login', { layout: false, data: null, error: null });
     }
     register(req, res, next) {
-        res.render('register', { layout: false ,  data :null , errors : null } );
+        res.render('register', { layout: false, data: null, errors: null });
     }
 
     admin(req, res, next) {
@@ -36,4 +35,4 @@ class SiteController {
     }
 }
 
-module.exports = new SiteController;
+module.exports = new SiteController();

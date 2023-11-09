@@ -1,7 +1,6 @@
 const User = require('../../models/User');
 
 class UserController {
-
     async getUsersforForm(req, res) {
         if (req.session.user) {
             if (req.session.user.role === 'admin') {
@@ -15,8 +14,8 @@ class UserController {
             res.render('login', { layout: false });
         }
     }
-    
-    async loginUser(req, res) {
+
+    async loginUser(req, res, next) {
         const { email, password } = req.body;
         try {
             const user = await User.findOne({ email, password });
@@ -32,7 +31,6 @@ class UserController {
                         return res.redirect('/');
                     }
                 });
-                
             } else {
                 res.render('login', { layout: false, error: 'Login Fail!', data: { email, password } });
             }
@@ -41,16 +39,14 @@ class UserController {
             console.error(error);
         }
     }
-    
-
 
     // Xử lý tạo mới user
     async createRegister(req, res) {
         const data = req.body;
         try {
             await User.create(data);
-            req.session.message = "User created successfully";
-            res.redirect("/login");
+            req.session.message = 'User created successfully';
+            res.redirect('/login');
         } catch (err) {
             if (err.name === 'ValidationError') {
                 // Handle validation errors
@@ -65,28 +61,27 @@ class UserController {
 
     async getDetailUser(req, res) {
         // Dua vao session in thong tin ra
-        if (req.session.user) {
+        console.log(req.session.user);
+        if (res.locals.user) {
             if (req.session.user.role === 'admin') {
                 // If the user is an admin, render the admin template
                 return res.render('back-end/index');
             } else {
-                const users = []; // You need to define 'users' based on your logic
+                const users = res.locals.user; // You need to define 'users' based on your logic
                 // If the user is not an admin, render the detailUser template
                 console.log(users);
-                return res.render('font-end/detailUser',  { users });
+                return res.render('font-end/detailUser', { users, admin: false });
             }
         } else {
             // If there is no user session, redirect to the login page
             return res.redirect('/login');
         }
     }
-    
 
-    logout (req, res )  {
+    logout(req, res) {
         req.session.destroy();
-        res.redirect("/login");
+        res.redirect('/login');
     }
-
 }
 
-module.exports = new  UserController ;
+module.exports = new UserController();
