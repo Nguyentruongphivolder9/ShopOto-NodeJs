@@ -69,10 +69,10 @@ class CateController{
         const cate = await Cate.findOne({category_id: CateID});
 
         if(cate){
-            cate.hidden = !cate.hidden;
+            cate.on_store = !cate.on_store;
             await cate.save()
 
-            req.session.message = cate.hidden ? "Category is hidden" : "Category is showing";
+            req.session.message = cate.on_store ? "Category is hidden" : "Category is showing";
         }else{
             req.session.message = "Category is not found";
         }
