@@ -9,7 +9,7 @@ class UserController {
                 return res.render('back-end/index', { user: req.session.user });
             } else if (req.session.user.role === 'user') {
                 console.log(req.session.user);
-                return res.redirect('/', { user: req.session.user });
+                return res.render('/', { user: req.session.user });
             }
         } else {
             res.render('login', { layout: false });

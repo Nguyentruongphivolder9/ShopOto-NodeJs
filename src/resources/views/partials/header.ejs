@@ -11,7 +11,7 @@
         </div>
         <div class="col-lg-6 text-center text-lg-right">
             <div class="d-inline-flex align-items-center">
-                <% if(typeof user !== 'undefined' && user){ %>
+                <% if(user != null ){ %>
                 <div class="btn-group">
                     <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
                         <%= user.username %>
