@@ -1,4 +1,5 @@
 const User = require('../../models/User');
+const Category = require('../../models/Category');
 
 class UserController {
     async getUsersforForm(req, res) {
@@ -61,6 +62,7 @@ class UserController {
 
     async getDetailUser(req, res) {
         // Dua vao session in thong tin ra
+        const categories = await Category.find({});
         console.log(req.session.user);
         if (res.locals.user) {
             if (req.session.user.role === 'admin') {
@@ -70,7 +72,7 @@ class UserController {
                 const users = res.locals.user; // You need to define 'users' based on your logic
                 // If the user is not an admin, render the detailUser template
                 console.log(users);
-                return res.render('font-end/detailUser', { users, admin: false });
+                return res.render('font-end/detailUser', { users, categories, admin: false });
             }
         } else {
             // If there is no user session, redirect to the login page

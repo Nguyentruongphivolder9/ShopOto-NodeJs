@@ -1,16 +1,17 @@
 const Cart = require('../../models/Cart');
 const Product = require('../../models/Product');
+const Category = require('../../models/Category');
 
 class CartController {
     async getCartUser(req, res) {
         try {
             const cart = await Cart.findOne({ user_id: "123" });
-
+            const categories = await Category.find({});
             if (cart) {
                 const productIds = cart.products.map(product => product.product_id);
                 const products = await Product.find({ product_id: { $in: productIds } });
 
-                res.render('font-end/shopping-cart', { admin: false, products });
+                res.render('font-end/shopping-cart', { admin: false, products,categories });
             }
         } catch (error) {
             console.log("Error: " + error);
